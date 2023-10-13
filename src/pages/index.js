@@ -8,6 +8,7 @@ import Image from "next/image";
 
 import SubCategoryService from "@/components/SubCategoryService";
 import { useState } from "react";
+import ChooseUs from "@/components/ChooseUs";
 
 export default function HomePage({ services }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,6 +32,8 @@ export default function HomePage({ services }) {
         handleCancel={handleCancel}
         services={services}
       />
+
+      <ChooseUs />
     </>
   );
 }
