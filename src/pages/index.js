@@ -29,6 +29,7 @@ export default function HomePage({ services }) {
         isModalOpen={isModalOpen}
         handleOk={handleOk}
         handleCancel={handleCancel}
+        services={services}
       />
     </>
   );

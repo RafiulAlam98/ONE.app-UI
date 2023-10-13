@@ -1,23 +1,54 @@
 import { useGetAllSubCategoryServiceQuery } from "@/redux/slice/subCategoryService/subCategorySlice";
+import ServiceModalList from "@/ui/ServiceModalList";
 import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { Col, Modal, Row, Spin } from "antd";
+import { Col, List, Modal, Row, Spin, Typography } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
 import { Layout, Menu, theme } from "antd";
-import React from "react";
+import Link from "next/link";
+import React, { useState } from "react";
 
-const SubCategoryService = ({ handleCancel, handleOk, isModalOpen }) => {
+const SubCategoryService = ({
+  handleCancel,
+  handleOk,
+  isModalOpen,
+  services,
+}) => {
   const { data, isLoading } = useGetAllSubCategoryServiceQuery(undefined);
   if (isLoading) {
     <Spin />;
   }
-
   const subCategoryServices = data?.data;
 
-  console.log(subCategoryServices);
+  const [selectedValue, setSelectedValue] = useState(null);
+  let value;
+
+  const getSubCategory = () => {
+    return services.data.map((service) => ({
+      serviceId: `${service._id}`,
+      key: `${service._id}`,
+      label: `${service.name}`,
+    }));
+  };
+  const handleMenuClick = ({ key }) => {
+    setSelectedValue(key);
+  };
+
+  const getContent = () => {
+    value = subCategoryServices?.filter(
+      (subCat) => subCat.category._id === selectedValue
+    );
+    return value;
+  };
+
+  if (selectedValue) {
+    getContent();
+  }
+  console.log(value);
+
   return (
     <div>
       <Modal
@@ -32,10 +63,10 @@ const SubCategoryService = ({ handleCancel, handleOk, isModalOpen }) => {
             breakpoint="md"
             collapsedWidth="0"
             onBreakpoint={(broken) => {
-              console.log(broken);
+              // console.log(broken);
             }}
-            onCollapse={(collapsed, type) => {
-              console.log(collapsed, type);
+            onCollapse={(collapsed, type, items) => {
+              // console.log(collapsed, type, items);
             }}
           >
             <div className="demo-logo-vertical" />
@@ -43,27 +74,24 @@ const SubCategoryService = ({ handleCancel, handleOk, isModalOpen }) => {
               theme="dark"
               mode="inline"
               defaultSelectedKeys={["4"]}
-              items={[
-                UserOutlined,
-                VideoCameraOutlined,
-                UploadOutlined,
-                UserOutlined,
-              ].map((icon, index) => ({
-                key: String(index + 1),
-                icon: React.createElement(icon),
-                label: `nav ${index + 1}`,
-              }))}
+              items={getSubCategory()}
+              onSelect={handleMenuClick}
+              selectedKeys={[selectedValue]}
             />
           </Sider>
           <Layout>
-            <Content style={{ margin: "24px 16px 0" }}>
+            <Content style={{ textAlign: "center", margin: "24px 46px 0" }}>
               <div
                 style={{
-                  padding: 24,
+                  padding: "",
                   minHeight: 360,
                 }}
               >
-                content
+                {!value ? (
+                  "Please Select a Service"
+                ) : (
+                  <ServiceModalList value={value} />
+                )}
               </div>
             </Content>
           </Layout>
