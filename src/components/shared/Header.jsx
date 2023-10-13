@@ -1,3 +1,6 @@
+import { UserOutlined } from "@ant-design/icons";
+import { Avatar } from "antd";
+import Link from "next/link";
 import React from "react";
 
 const Header = () => {
@@ -14,24 +17,56 @@ const Header = () => {
           maxWidth: "1100px",
         }}
       >
-        <div style={{ fontFamily: "sans-serif", font: "icon" }}>
-          <span
-            style={{ color: "tomato", fontWeight: "700", fontSize: "24px" }}
-          >
-            ONE
-          </span>
+        <Link href="/">
           <div
             style={{
-              fontSize: "24px",
-              borderRadius: "",
-              display: "inline-block",
-              width: "4px",
-              height: "4px",
-              backgroundColor: "black",
-              borderRadius: "4px",
+              fontFamily: "sans-serif",
+              font: "icon",
+              paddingLeft: "16px",
             }}
-          ></div>
-          <span style={{ font: "icon", fontStyle: "italic" }}>app</span>
+          >
+            <span
+              style={{
+                color: "tomato",
+                fontWeight: "700",
+                fontSize: "24px",
+                fontFamily: "Black Ops One, cursive",
+              }}
+            >
+              ONE
+            </span>
+            <div
+              style={{
+                fontSize: "24px",
+                borderRadius: "",
+                display: "inline-block",
+                width: "4px",
+                height: "4px",
+                backgroundColor: "yellow",
+                borderRadius: "4px",
+              }}
+            ></div>
+            <span
+              style={{
+                font: "icon",
+                fontStyle: "italic",
+                color: "yellowgreen",
+                fontFamily: "Black Ops One, cursive",
+              }}
+            >
+              app
+            </span>
+          </div>
+        </Link>
+
+        <Link style={{}} href="/allService">
+          All Services
+        </Link>
+
+        <div>
+          <Link href="/userProfile">
+            <Avatar size="large" icon={<UserOutlined />} />
+          </Link>
         </div>
       </div>
     </div>

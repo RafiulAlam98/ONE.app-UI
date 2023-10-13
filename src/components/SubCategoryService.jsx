@@ -73,7 +73,6 @@ const SubCategoryService = ({
             <Menu
               theme="dark"
               mode="inline"
-              defaultSelectedKeys={["4"]}
               items={getSubCategory()}
               onSelect={handleMenuClick}
               selectedKeys={[selectedValue]}
