@@ -6,12 +6,30 @@ import Hero from "@/ui/Hero";
 import Services from "@/components/Services";
 import Image from "next/image";
 
+import SubCategoryService from "@/components/SubCategoryService";
+import { useState } from "react";
+
 export default function HomePage({ services }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
       <HeroCarousel />
 
-      <Services services={services} />
+      <Services services={services} showModal={showModal} />
+      <SubCategoryService
+        isModalOpen={isModalOpen}
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+      />
     </>
   );
 }
