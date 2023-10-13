@@ -32,7 +32,7 @@ const extras = [
 const HeroCarousel = () => {
   return (
     <div style={{ backgroundColor: "#FFFFFF" }}>
-      <div style={{ maxWidth: "1200px", margin: "auto" }}>
+      <div style={{ maxWidth: "1100px", margin: "auto" }}>
         <Row gutter={24}>
           <Col lg={18} md={20} sm={24}>
             <Carousel autoplay>
@@ -101,10 +101,9 @@ const HeroCarousel = () => {
                   justifyContent: "space-between",
                   alignItems: "center",
 
-                  boxShadow:
-                    "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset",
-                  padding: "24px",
-                  marginTop: "15px",
+                  boxShadow: "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset",
+                  padding: "12px",
+                  marginBottom: "6px",
                   borderRadius: "6px",
                 }}
                 key={extra.id}
@@ -112,7 +111,7 @@ const HeroCarousel = () => {
                 <div
                   style={{
                     color: "#F66A05",
-                    fontSize: "28px",
+                    fontSize: "36px",
                     marginRight: "16px",
                   }}
                 >
@@ -128,7 +127,7 @@ const HeroCarousel = () => {
                   >
                     {extra.title}
                   </h2>
-                  <h2 style={{ fontSize: "14px" }}>{extra.description}</h2>
+                  <h2 style={{ fontSize: "12px" }}>{extra.description}</h2>
                 </div>
               </div>
             ))}

@@ -1,6 +1,7 @@
 import { Layout } from "antd";
+import Header from "../shared/Header";
 
-const { Header, Footer, Content } = Layout;
+const { Footer, Content } = Layout;
 const headerStyle = {
   textAlign: "center",
   color: "#fff",
@@ -23,7 +24,7 @@ const footerStyle = {
 const MainLayout = ({ children }) => {
   return (
     <Layout>
-      <Header style={headerStyle}>Header</Header>
+      <Header />
       <Content style={{ minHeight: "100vh" }}>{children}</Content>
       <Footer style={footerStyle}>Footer</Footer>
     </Layout>
