@@ -7,6 +7,7 @@ import {
   EuroCircleOutlined,
   SmileOutlined,
 } from "@ant-design/icons";
+import banner from "@/assets/images/banner.webp";
 
 const extras = [
   {
@@ -31,69 +32,90 @@ const extras = [
 
 const HeroCarousel = () => {
   return (
-    <div style={{ backgroundColor: "#FFFFFF" }}>
-      <div style={{ maxWidth: "1100px", margin: "auto" }}>
-        <Row gutter={24}>
-          <Col lg={18} md={20} sm={24}>
-            <Carousel autoplay>
-              <div
+    <>
+      <div>
+        <Carousel autoplay>
+          <div
+            style={{
+              borderRadius: "20px",
+              border: "none",
+            }}
+          >
+            <img
+              src="https://img.freepik.com/free-photo/male-electrician-works-switchboard-with-electrical-connecting-cable_169016-15204.jpg?w=900&t=st=1697161011~exp=1697161611~hmac=c75381af99c608316f593eeba0fd25696dc13c74353eb134fdd08890e647d0f3"
+              alt=""
+              style={{
+                width: "100%",
+                height: "330px",
+                opacity: ".9",
+              }}
+            />
+          </div>
+
+          <div>
+            <img
+              src="https://img.freepik.com/free-photo/hvac-technician-working-capacitor-part-condensing-unit-male-worker-repairman-uniform-repairing-adjusting-conditioning-system-diagnosing-looking-technical-issues_155003-18256.jpg?w=900&t=st=1697162265~exp=1697162865~hmac=c6d9e2f9c4df81af8d6eac581c519ac1ef02493de66f2f87d8a7aa4c88935dad"
+              alt=""
+              style={{
+                width: "100%",
+                height: "330px",
+                opacity: ".9",
+              }}
+            />
+          </div>
+          <div>
+            <img
+              src="https://img.freepik.com/free-photo/worker-repairing-water-heater_23-2149334230.jpg?w=900&t=st=1697162385~exp=1697162985~hmac=44fda3f326930f23ccee99c0ce36cb4382ce97e46e944f00cd5bdd87fd5a0d19"
+              alt=""
+              style={{
+                width: "100%",
+                height: "330px",
+                opacity: ".9",
+              }}
+            />
+          </div>
+          <div>
+            <img
+              src="https://img.freepik.com/free-photo/full-shot-people-cleaning-office_23-2150454568.jpg?w=900&t=st=1697162446~exp=1697163046~hmac=93226a7a6f43853d676380b8f9bf2ed023f11f539b3f1390894b7f447c57b901"
+              alt=""
+              style={{
+                width: "100%",
+                height: "330px",
+                opacity: ".9",
+              }}
+            />
+          </div>
+        </Carousel>
+      </div>
+
+    </>
+  );
+};
+
+export default HeroCarousel;
+
+/*
+
+              <h1
                 style={{
-                  borderRadius: "20px",
-                  border: "none",
+                  position: "absolute",
+                  top: "50px",
+                  left: "50px",
+                  color: "#fff",
+                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                  padding: "10px",
                 }}
               >
-                <img
-                  src="https://img.freepik.com/free-photo/male-electrician-works-switchboard-with-electrical-connecting-cable_169016-15204.jpg?w=900&t=st=1697161011~exp=1697161611~hmac=c75381af99c608316f593eeba0fd25696dc13c74353eb134fdd08890e647d0f3"
-                  alt=""
-                  style={{
-                    width: "100%",
-                    height: "330px",
-                    opacity: ".9",
-                    borderRadius: "0 0 15px 15px",
-                  }}
-                />
-              </div>
+                ONE APP
+              </h1>
+              <h3>এক প্লাটফর্মে সব সমস্যার সমাধান</h3>
+                    <div style={{maxWidth:'1100px', margin:"auto" }}>
+        <Image src={banner} width={"50%"} height={"50px"} alt="" style={{marginTop:"16px"}} />
+      </div>
+*/
 
-              <div>
-                <img
-                  src="https://img.freepik.com/free-photo/hvac-technician-working-capacitor-part-condensing-unit-male-worker-repairman-uniform-repairing-adjusting-conditioning-system-diagnosing-looking-technical-issues_155003-18256.jpg?w=900&t=st=1697162265~exp=1697162865~hmac=c6d9e2f9c4df81af8d6eac581c519ac1ef02493de66f2f87d8a7aa4c88935dad"
-                  alt=""
-                  style={{
-                    width: "100%",
-                    height: "330px",
-                    opacity: ".9",
-                    borderRadius: "0 0 15px 15px",
-                  }}
-                />
-              </div>
-              <div>
-                <img
-                  src="https://img.freepik.com/free-photo/worker-repairing-water-heater_23-2149334230.jpg?w=900&t=st=1697162385~exp=1697162985~hmac=44fda3f326930f23ccee99c0ce36cb4382ce97e46e944f00cd5bdd87fd5a0d19"
-                  alt=""
-                  style={{
-                    width: "100%",
-                    height: "330px",
-                    opacity: ".9",
-                    borderRadius: "0 0 15px 15px",
-                  }}
-                />
-              </div>
-              <div>
-                <img
-                  src="https://img.freepik.com/free-photo/full-shot-people-cleaning-office_23-2150454568.jpg?w=900&t=st=1697162446~exp=1697163046~hmac=93226a7a6f43853d676380b8f9bf2ed023f11f539b3f1390894b7f447c57b901"
-                  alt=""
-                  style={{
-                    width: "100%",
-                    height: "330px",
-                    opacity: ".9",
-                    borderRadius: "0 0 15px 15px",
-                  }}
-                />
-              </div>
-            </Carousel>
-          </Col>
-
-          <Col lg={6} md={4} sm={24}>
+/*
+ <Col lg={6} md={4} sm={24}>
             {extras.map((extra) => (
               <div
                 style={{
@@ -131,28 +153,4 @@ const HeroCarousel = () => {
                 </div>
               </div>
             ))}
-          </Col>
-        </Row>
-      </div>
-    </div>
-  );
-};
-
-export default HeroCarousel;
-
-/*
-
-              <h1
-                style={{
-                  position: "absolute",
-                  top: "50px",
-                  left: "50px",
-                  color: "#fff",
-                  backgroundColor: "rgba(0, 0, 0, 0.5)",
-                  padding: "10px",
-                }}
-              >
-                ONE APP
-              </h1>
-              <h3>এক প্লাটফর্মে সব সমস্যার সমাধান</h3>
-*/
+          </Col> */
