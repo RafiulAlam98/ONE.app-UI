@@ -1,14 +1,9 @@
 import { useGetAllSubCategoryServiceQuery } from "@/redux/slice/subCategoryService/subCategorySlice";
 import ServiceModalList from "@/ui/ServiceModalList";
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { Col, List, Modal, Row, Spin, Typography } from "antd";
-const { Header, Content, Footer, Sider } = Layout;
+import { Modal, Spin } from "antd";
+const { Content, Sider } = Layout;
 import { Layout, Menu, theme } from "antd";
-import Link from "next/link";
+
 import React, { useState } from "react";
 
 const SubCategoryService = ({
@@ -47,7 +42,7 @@ const SubCategoryService = ({
   if (selectedValue) {
     getContent();
   }
-  console.log(value);
+  console.log("value", value);
 
   return (
     <div>

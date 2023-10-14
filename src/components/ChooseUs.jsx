@@ -13,12 +13,12 @@ const items = [
     icon: "https://w7.pngwing.com/pngs/681/98/png-transparent-telephone-call-customer-service-24-7-service-mobile-phones-24-7-logo-blue-telephone-call-text-thumbnail.png",
   },
   {
-    id: 1,
+    id: 3,
     title: "Sanitizing Hands & Equipment",
     icon: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/05/sanitizingImmunity-1212006615-770x533-1.jpg",
   },
   {
-    id: 1,
+    id: 4,
     title: "Ensuring Gloves",
     icon: "https://m.media-amazon.com/images/I/51ot4bKoziL._AC_UF1000,1000_QL80_.jpg",
   },

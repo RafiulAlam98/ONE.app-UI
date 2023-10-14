@@ -43,7 +43,9 @@ HomePage.getLayout = function getLayout(page) {
 };
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:5000/api/v1/services");
+  const res = await fetch(
+    "https://one-app-rafiulalam98.vercel.app/api/v1/services"
+  );
   const services = await res.json();
   return {
     props: {
