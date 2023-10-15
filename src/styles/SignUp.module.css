@@ -1,0 +1,10 @@
+.customInput {
+    border: 1px solid #6E58D8;
+    padding: 4px;
+    background-color: white
+}
+
+.customInput:focus {
+    border: 2px solid tomato;
+    outline: none;
+}

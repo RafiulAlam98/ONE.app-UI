@@ -1,11 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { UserOutlined } from "@ant-design/icons";
-import { Col, Input, Row, Typography, Watermark } from "antd";
-import { useState } from "react";
+import { Typography } from "antd";
 import { useForm } from "react-hook-form";
+import styles from "@/styles/SignUp.module.css";
 
 const signup = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
   const {
     register,
     handleSubmit,
@@ -15,20 +13,13 @@ const signup = () => {
 
   const onSubmit = (data) => console.log(data);
 
-  console.log(watch("example"));
-
   return (
     <div
       style={{
-        backgroundColor: "",
-        margin: 0,
-        padding: 0,
-        minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
-        margin: 0,
       }}
     >
       <div
@@ -53,28 +44,67 @@ const signup = () => {
         </Typography>
 
         <form onSubmit={handleSubmit(onSubmit)}>
+          <label style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}>
+            Email
+          </label>
           <input
-            {...register("email", { required: true })}
-            placeholder="Email or Phone"
+            {...register("email", { required: "Email Address is required" })}
+            placeholder="Enter Email "
             style={{
-              marginBottom: 8,
+              marginBottom: 12,
               width: "100%",
               height: "24px",
               borderRadius: "4px",
             }}
+            type="email"
+            className={styles.customInput}
           />
+          <label style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}>
+            Password
+          </label>
           <input
             {...register("password", { required: true })}
-            placeholder="Email or Phone"
-            visibilityToggle={{
-              visible: passwordVisible,
-              onVisibleChange: setPasswordVisible,
+            placeholder="Enter Password"
+            style={{
+              marginBottom: 12,
+              width: "100%",
+              height: "24px",
+              borderRadius: "4px",
             }}
-            style={{ marginBottom: 8 }}
+            type="password"
+            className={styles.customInput}
           />
           {errors.exampleRequired && <span>Password Required</span>}
-          
-          <input type="submit" />
+          <label style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}>
+            Phone{" "}
+          </label>
+          <input
+            {...register("phoneNumber")}
+            placeholder="Enter Phone Number"
+            style={{
+              marginBottom: 12,
+              width: "100%",
+              height: "24px",
+              borderRadius: "4px",
+            }}
+            type="text"
+            className={styles.customInput}
+          />
+
+          <input
+            style={{
+              backgroundColor: "#059862",
+              border: "none",
+              color: "white",
+              padding: 8,
+              marginTop: 8,
+              marginBottom: 8,
+              fontSize: 14,
+              borderRadius: 6,
+              width: 100,
+            }}
+            type="submit"
+          />
         </form>
       </div>
     </div>
@@ -82,3 +112,5 @@ const signup = () => {
 };
 
 export default signup;
+
+

@@ -3,7 +3,7 @@ import { api } from "../api/apiSlice";
 const subCategoryApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllSubCategoryService: builder.query({
-      query: () => `sub-services`,
+      query: () => `/api/v1/sub-services`,
       providesTags: ["subCategoryService"],
     }),
   }),

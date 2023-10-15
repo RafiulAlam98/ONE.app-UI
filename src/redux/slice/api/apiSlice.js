@@ -1,8 +1,9 @@
+import { getBaseUrl } from "@/helpers/config/envConfig";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://one-app-rafiulalam98.vercel.app/api/v1/",
+    baseUrl: getBaseUrl(),
   }),
   tagTypes: ["subCategoryService"],
   endpoints: () => ({}),
