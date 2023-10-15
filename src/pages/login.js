@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Typography } from "antd";
+import Link from "next/link";
+import React from "react";
 import { useForm } from "react-hook-form";
 import styles from "@/styles/SignUp.module.css";
-import { ArrowLeftOutlined } from "@ant-design/icons";
-import Link from "next/link";
 
-const signup = () => {
+const login = () => {
   const {
     register,
     handleSubmit,
@@ -14,7 +15,6 @@ const signup = () => {
   } = useForm();
 
   const onSubmit = (data) => console.log(data);
-
   return (
     <>
       <Link style={{ textDecoration: "none" }} href="/">
@@ -49,7 +49,7 @@ const signup = () => {
               paddingBottom: 16,
             }}
           >
-            <span style={{ borderBottom: "2px solid" }}> SIGN UP</span>
+            <span style={{ borderBottom: "2px solid" }}> SIGN IN</span>
           </Typography>
 
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -57,7 +57,9 @@ const signup = () => {
               Email
             </label>
             <input
-              {...register("email", { required: "Email Address is required" })}
+              {...register("email", {
+                required: "Email Address is required",
+              })}
               placeholder="Enter Email "
               style={{
                 marginBottom: 12,
@@ -84,21 +86,6 @@ const signup = () => {
               className={styles.customInput}
             />
             {errors.exampleRequired && <span>Password Required</span>}
-            <label style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}>
-              Phone{" "}
-            </label>
-            <input
-              {...register("phoneNumber")}
-              placeholder="Enter Phone Number"
-              style={{
-                marginBottom: 12,
-                width: "100%",
-                height: "24px",
-                borderRadius: "4px",
-              }}
-              type="text"
-              className={styles.customInput}
-            />
 
             <input
               style={{
@@ -115,9 +102,9 @@ const signup = () => {
               className={styles.formBtn}
               type="submit"
             />
-            <Link style={{ textDecoration: "none" }} href="/login">
+            <Link style={{ textDecoration: "none" }} href="/signup">
               <Typography className={styles.formText}>
-                Already have an account? Sign In
+                Not Have an Account? Sign Up
               </Typography>{" "}
             </Link>
           </form>
@@ -127,6 +114,4 @@ const signup = () => {
   );
 };
 
-export default signup;
-
-
+export default login;

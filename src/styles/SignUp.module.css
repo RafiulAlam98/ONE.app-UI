@@ -8,3 +8,22 @@
     border: 2px solid tomato;
     outline: none;
 }
+.formBtn {
+    opacity: 0.9;
+}
+
+.formBtn:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.formText {
+    font-size: 14px;
+    color: blue;
+    opacity: 0.8
+}
+
+.formText:hover {
+
+    opacity: 1
+}

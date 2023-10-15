@@ -65,6 +65,9 @@ const Header = () => {
         <Link style={{ fontSize: 16, color: "white" }} href="/signup">
           Sign Up
         </Link>
+        <Link style={{ fontSize: 16, color: "white" }} href="/login">
+          Sign In
+        </Link>
 
         <div>
           <Link href="/userProfile">
