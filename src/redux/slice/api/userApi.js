@@ -3,17 +3,15 @@ import { api } from "../api/apiSlice";
 const userApi = api.injectEndpoints({
   endpoints: (builder) => ({
     userSignup: builder.mutation({
-      query: ({ data }) => ({
+      query: (data) => ({
         url: `/api/v1/users/signup`,
         method: "POST",
         body: data,
       }),
       invalidatesTags: ["users"],
     }),
-  }),
-  userLogin: (builder) => ({
     userLogin: builder.mutation({
-      query: ({ data }) => ({
+      query: (data) => ({
         url: `/api/v1/auth/login`,
         method: "POST",
         body: data,
@@ -22,4 +20,8 @@ const userApi = api.injectEndpoints({
     }),
   }),
 });
-export const { useuserSignupMutation, useUserLoginMutation } = userApi;
+
+export const { useUserSignupMutation, useUserLoginMutation } = userApi;
+
+
+

@@ -42,7 +42,7 @@ const SubCategoryService = ({
   if (selectedValue) {
     getContent();
   }
-  console.log("value", value);
+
 
   return (
     <div>

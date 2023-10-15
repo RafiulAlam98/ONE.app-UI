@@ -1,12 +1,20 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { Typography } from "antd";
+import { Alert, Spin, Typography } from "antd";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "@/styles/SignUp.module.css";
+import { useUserLoginMutation } from "@/redux/slice/api/userApi";
+import { saveDataToBrowser } from "@/helpers/utils/saveData";
+import { useRouter } from "next/router";
+const { Text } = Typography;
 
 const login = () => {
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -14,7 +22,28 @@ const login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const [userLogin, { error }] = useUserLoginMutation();
+
+  const onSubmit = async (data) => {
+    try {
+      setLoading(true);
+      const res = await userLogin(data);
+      console.log(res.data);
+      if (res.data.statusCode === 200) {
+        const { accessToken, role, email } = res.data.data;
+        saveDataToBrowser(accessToken, role, email);
+        <Alert message={res.message} type="success" />;
+        setSuccessMessage(res.message);
+        router.push("/");
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      <Alert message={error.message} type="error" />;
+      setErrorMessage(error.message);
+      setLoading(false);
+    }
+  };
   return (
     <>
       <Link style={{ textDecoration: "none" }} href="/">
@@ -87,21 +116,36 @@ const login = () => {
             />
             {errors.exampleRequired && <span>Password Required</span>}
 
-            <input
-              style={{
-                backgroundColor: "#059862",
-                border: "none",
-                color: "white",
-                padding: 8,
-                marginTop: 8,
-                marginBottom: 8,
-                fontSize: 14,
-                borderRadius: 6,
-                width: 100,
-              }}
-              className={styles.formBtn}
-              type="submit"
-            />
+            {loading === true ? (
+              <Spin tip="Progressing" size="small">
+                <div className="content" />
+              </Spin>
+            ) : (
+              <input
+                style={{
+                  backgroundColor: "#059862",
+                  border: "none",
+                  color: "white",
+                  padding: 8,
+                  marginTop: 8,
+                  marginBottom: 8,
+                  fontSize: 14,
+                  borderRadius: 6,
+                  width: 100,
+                }}
+                className={styles.formBtn}
+                type="submit"
+              />
+            )}
+            {errorMessage ? (
+              <Text style={{ padding: "8px" }} type="danger">
+                {errorMessage}
+              </Text>
+            ) : (
+              <Text style={{ padding: "8px" }} type="success">
+                {successMessage}
+              </Text>
+            )}
             <Link style={{ textDecoration: "none" }} href="/signup">
               <Typography className={styles.formText}>
                 Not Have an Account? Sign Up
