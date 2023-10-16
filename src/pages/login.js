@@ -34,7 +34,12 @@ const login = () => {
         const { accessToken, role, email } = res.data.data;
         storeUserInfo(accessToken, role, email);
         setSuccessMessage(res.message);
-        router.push("/userProfile");
+        if (role === "user") {
+          router.push("/userProfile");
+        } else {
+          router.push("/admin");
+        }
+        
         setLoading(false);
         return <Alert message={res.message} type="success" />;
       }

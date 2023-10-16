@@ -3,11 +3,13 @@ import { isLoggedIn } from "@/services/auth.service";
 import {
   DesktopOutlined,
   FileOutlined,
+  HomeOutlined,
   PieChartOutlined,
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import { Layout, Breadcrumb, Menu } from "antd";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -43,7 +45,7 @@ const UserDashboardLayout = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (!loggedInUser) {
+    if (!loggedInUser.role === "user") {
       router.push("/login");
     }
     setIsLoading(true);
@@ -76,6 +78,12 @@ const UserDashboardLayout = ({ children }) => {
         <Header style={{ padding: 0 }} />
         <Content style={{ margin: "0 16px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
+            <Breadcrumb.Item>
+              <Link href="/">
+                {" "}
+                <HomeOutlined />
+              </Link>
+            </Breadcrumb.Item>
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>

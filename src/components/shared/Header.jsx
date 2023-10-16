@@ -9,6 +9,7 @@ import React from "react";
 const Header = () => {
   const loggedInUser = getUserInfo();
   const router = useRouter();
+  console.log(loggedInUser);
   const handleLogout = () => {
     removeUserInfo(authKey);
     router.push("/login");
@@ -110,9 +111,15 @@ const Header = () => {
             </>
           )}
           <div>
-            <Link href="/userProfile">
-              <Avatar size="large" icon={<UserOutlined />} />
-            </Link>
+            {loggedInUser === "user" ? (
+              <Link href="/userProfile">
+                <Avatar size="large" icon={<UserOutlined />} />
+              </Link>
+            ) : (
+              <Link href="/admin">
+                <Avatar size="large" icon={<UserOutlined />} />
+              </Link>
+            )}
           </div>
         </div>
       </div>
