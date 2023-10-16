@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { isLoggedIn } from "@/services/auth.service";
 import {
   DesktopOutlined,
   FileOutlined,
@@ -6,7 +8,8 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Layout, Breadcrumb, Menu } from "antd";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -34,6 +37,21 @@ const items = [
 
 const UserDashboardLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
+
+  const loggedInUser = isLoggedIn();
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (!loggedInUser) {
+      router.push("/login");
+    }
+    setIsLoading(true);
+  }, [router, isLoading]);
+
+  if (!isLoading) {
+    return <p>Loading</p>;
+  }
 
   return (
     <Layout

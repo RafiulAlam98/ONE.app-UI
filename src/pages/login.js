@@ -8,6 +8,7 @@ import styles from "@/styles/SignUp.module.css";
 import { useUserLoginMutation } from "@/redux/slice/api/userApi";
 import { saveDataToBrowser } from "@/helpers/utils/saveData";
 import { useRouter } from "next/router";
+import { storeUserInfo } from "@/services/auth.service";
 const { Text } = Typography;
 
 const login = () => {
@@ -31,11 +32,11 @@ const login = () => {
       console.log(res.data);
       if (res.data.statusCode === 200) {
         const { accessToken, role, email } = res.data.data;
-        saveDataToBrowser(accessToken, role, email);
-        <Alert message={res.message} type="success" />;
+        storeUserInfo(accessToken, role, email);
         setSuccessMessage(res.message);
-        router.push("/");
+        router.push("/userProfile");
         setLoading(false);
+        return <Alert message={res.message} type="success" />;
       }
     } catch (error) {
       console.log(error);
@@ -117,7 +118,7 @@ const login = () => {
             {errors.exampleRequired && <span>Password Required</span>}
 
             {loading === true ? (
-              <Spin tip="Progressing" size="small">
+              <Spin style={{ padding: "8px 0" }} tip="Progressing" size="small">
                 <div className="content" />
               </Spin>
             ) : (

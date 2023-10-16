@@ -9,8 +9,9 @@ import {
   useUserSignupMutation,
 } from "@/redux/slice/api/userApi";
 import { useState } from "react";
-import { saveDataToBrowser } from "@/helpers/utils/saveData";
+
 import { useRouter } from "next/router";
+import { storeUserInfo } from "@/services/auth.service";
 const { Text } = Typography;
 
 const signup = () => {
@@ -38,11 +39,11 @@ const signup = () => {
         console.log(res.data);
         if (res.data.statusCode === 200) {
           const { accessToken, role, email } = res.data.data;
-          saveDataToBrowser(accessToken, role, email);
-          <Alert message={res.message} type="success" />;
           setSuccessMessage(res.message);
-          router.push("/");
+          storeUserInfo(accessToken, user, role);
+          router.push("/userProfile");
           setLoading(false);
+          return <Alert message={res.message} type="success" />;
         }
       }
     } catch (error) {
