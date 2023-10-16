@@ -6,6 +6,13 @@ const subCategoryApi = api.injectEndpoints({
       query: () => `/api/v1/sub-services`,
       providesTags: ["subCategoryService"],
     }),
+    getSingleSubCategoryService: builder.query({
+      query: (id) => `/api/v1/sub-services/${id}`,
+      providesTags: ["subCategoryService"],
+    }),
   }),
 });
-export const { useGetAllSubCategoryServiceQuery } = subCategoryApi;
+export const {
+  useGetAllSubCategoryServiceQuery,
+  useGetSingleSubCategoryServiceQuery,
+} = subCategoryApi;

@@ -3,9 +3,10 @@ import Link from "next/link";
 import React from "react";
 
 const ServiceModalList = ({ value }) => {
+  console.log(value._id);
   return (
     <>
-      <Link href="">
+      <Link href={``}>
         <List
           size="small"
           style={{
@@ -16,17 +17,19 @@ const ServiceModalList = ({ value }) => {
           bordered
           dataSource={value}
           renderItem={(item) => (
-            <List.Item>
-              <Typography
-                style={{
-                  fontWeight: 400,
-                  color: "black",
-                  fontSize: "16px",
-                }}
-              >
-                {item.title}
-              </Typography>
-            </List.Item>
+            <Link href={`/serviceDetails/${item._id}`}>
+              <List.Item>
+                <Typography
+                  style={{
+                    fontWeight: 400,
+                    color: "black",
+                    fontSize: "16px",
+                  }}
+                >
+                  {item.title}
+                </Typography>
+              </List.Item>
+            </Link>
           )}
         />
       </Link>
