@@ -36,14 +36,13 @@ const signup = () => {
       console.log("userSignUp", res.data.statusCode);
       if (res.data.statusCode === 200) {
         const res = await userLogin(data);
-        console.log(res.data);
-        if (res.data.statusCode === 200) {
+        if (res.statusCode === 200) {
+          console.log(res.statusCode);
           const { accessToken, role, email } = res.data.data;
           setSuccessMessage(res.message);
           storeUserInfo(accessToken, user, role);
           router.push("/userProfile");
           setLoading(false);
-          return <Alert message={res.message} type="success" />;
         }
       }
     } catch (error) {

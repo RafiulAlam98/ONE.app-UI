@@ -1,4 +1,11 @@
+import { getFromLocalStorage } from "@/helpers/utils/saveData";
 import { api } from "../api/apiSlice";
+import { authKey } from "@/constants/authKey";
+
+const token = getFromLocalStorage(authKey);
+const headers = {
+  Authorization: `${token}`,
+};
 
 const userApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -18,10 +25,19 @@ const userApi = api.injectEndpoints({
       }),
       invalidatesTags: ["users"],
     }),
+    getAllUser: builder.query({
+      query: (token) => ({
+        url: `/api/v1/users`,
+        method: "GET",
+        headers: headers,
+      }),
+      providesTags: ["users"],
+    }),
   }),
 });
 
-export const { useUserSignupMutation, useUserLoginMutation } = userApi;
-
-
-
+export const {
+  useUserSignupMutation,
+  useUserLoginMutation,
+  useGetAllUserQuery,
+} = userApi;

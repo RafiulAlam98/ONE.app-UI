@@ -28,7 +28,13 @@ const AdminLayout = ({ children }) => {
     <div>
       <Layout>
         <Layout hasSider>
-          <Content style={{ backgroundColor: "#E7E9EB" }}>{children}</Content>
+          <Content
+            style={{
+              backgroundColor: "#E7E9EB",
+            }}
+          >
+            {children}
+          </Content>
           <Sider
             style={{
               overflow: "auto",
