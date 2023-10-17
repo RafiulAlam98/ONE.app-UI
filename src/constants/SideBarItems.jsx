@@ -52,11 +52,7 @@ export const SideBarItems = (role) => {
           key: "update user",
           icon: <UserOutlined />,
         },
-        {
-          label: <Link href="/users/delete-user">Delete User</Link>,
-          key: "delete user",
-          icon: <UserDeleteOutlined />,
-        },
+
       ],
     },
     {

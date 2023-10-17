@@ -28,7 +28,7 @@ const AdminLayout = ({ children }) => {
     <div>
       <Layout>
         <Layout hasSider>
-          <Content>{children}</Content>
+          <Content style={{ backgroundColor: "#E7E9EB" }}>{children}</Content>
           <Sider
             style={{
               overflow: "auto",
@@ -49,7 +49,6 @@ const AdminLayout = ({ children }) => {
               defaultSelectedKeys={["profile"]}
               mode="inline"
               items={SideBarItems(role)}
-              style={{}}
             />
           </Sider>
         </Layout>
