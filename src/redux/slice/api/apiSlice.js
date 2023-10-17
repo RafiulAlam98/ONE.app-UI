@@ -7,8 +7,7 @@ export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: getBaseUrl(),
-
   }),
-  tagTypes: ["subCategoryService","users"],
+  tagTypes: ["subCategoryService", "users", "services"],
   endpoints: () => ({}),
 });

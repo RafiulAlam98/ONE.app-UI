@@ -1,11 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { SideBarItems } from "@/constants/SideBarItems";
+import { isLoggedIn } from "@/services/auth.service";
 import {
   DesktopOutlined,
   FileOutlined,
   PieChartOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 const { Header, Footer, Sider, Content } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -23,6 +26,20 @@ const items = [
 ];
 
 const AdminLayout = ({ children }) => {
+  const loggedInUser = isLoggedIn();
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (!loggedInUser) {
+      router.push("/login");
+    }
+    setIsLoading(true);
+  }, [router, isLoading]);
+
+  if (!isLoading) {
+    return <p>Loading</p>;
+  }
   const role = "admin";
   return (
     <div>

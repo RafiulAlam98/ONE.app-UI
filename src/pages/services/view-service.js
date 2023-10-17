@@ -1,16 +1,15 @@
 import AdminLayout from "@/components/Layout/AdminLayout";
+import { ServiceTableColumn } from "@/constants/ServiceTableColumn";
+import { UserTableColumn } from "@/constants/UserTableColumn";
+import { useGetAllServicesQuery } from "@/redux/slice/api/servicesApi";
 import { HomeOutlined } from "@ant-design/icons";
 import { Breadcrumb, Spin, Table } from "antd";
 import Link from "next/link";
+import React from "react";
 
-import { useGetAllUserQuery } from "@/redux/slice/api/userApi";
-import { UserTableColumn } from "@/constants/userTableColumn";
-
-const ViewUser = () => {
-  const { data, isLoading } = useGetAllUserQuery();
- 
-  console.log(data);
-
+const ViewService = () => {
+  const { data, isLoading } = useGetAllServicesQuery();
+  console.log(data?.data);
   return (
     <div>
       <div style={{ margin: 32 }}>
@@ -24,10 +23,10 @@ const ViewUser = () => {
               ),
             },
             {
-              title: "Users",
+              title: "Services",
             },
             {
-              title: <Link href="view-user">View Users</Link>,
+              title: <Link href="view-service">View Users</Link>,
             },
           ]}
         />
@@ -45,16 +44,14 @@ const ViewUser = () => {
       )}
       <Table
         style={{ maxWidth: 800, margin: "0 auto" }}
-        columns={UserTableColumn()}
+        columns={ServiceTableColumn()}
         dataSource={data?.data}
       />
     </div>
   );
 };
 
-export default ViewUser;
-
-ViewUser.getLayout = function getLayout(page) {
+export default ViewService;
+ViewService.getLayout = function getLayout(page) {
   return <AdminLayout>{page}</AdminLayout>;
 };
-

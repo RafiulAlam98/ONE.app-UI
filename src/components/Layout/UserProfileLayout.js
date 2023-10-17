@@ -45,7 +45,7 @@ const UserDashboardLayout = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (!loggedInUser.role === "user") {
+    if (!loggedInUser) {
       router.push("/login");
     }
     setIsLoading(true);
