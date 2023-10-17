@@ -4,8 +4,9 @@ import { Spin } from "antd";
 import { useRouter } from "next/router";
 import React from "react";
 import styles from "@/styles/Details.module.css";
-import DetailsHeader from "@/components/DetailsHeader";
+
 import Hero from "@/components/ui/Hero";
+import ServiceDetails from "@/components/ServiceDetails";
 
 const ServiceDetailsPage = () => {
   const router = useRouter();
@@ -22,7 +23,7 @@ const ServiceDetailsPage = () => {
   return (
     <div className={styles.mainContainer}>
       <Hero detailsService={detailsService} />
-      <ServiceDetailsPage />
+      <ServiceDetails detailsService={detailsService} />
     </div>
   );
 };
