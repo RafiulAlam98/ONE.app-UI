@@ -46,7 +46,7 @@ const AdminLayout = ({ children }) => {
             </h1>
             <Menu
               theme="dark"
-              defaultSelectedKeys={["users"]}
+              defaultSelectedKeys={["profile"]}
               mode="inline"
               items={SideBarItems(role)}
               style={{}}
