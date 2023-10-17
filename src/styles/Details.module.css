@@ -28,3 +28,22 @@
     background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(170, 117, 117, 1) 56%, rgba(252, 176, 69, 1) 100%);
     margin-top: 16px;
 }
+.cardModalBtn {
+    background-color: white;
+    color: black;
+    margin: 8px;
+    font-weight: 500;
+    font-family: "serif";
+    font-size: 14px;
+    border-radius: 6;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.cardModalBtn:hover {
+    font-size: 16px;
+    font-weight: 600;
+}

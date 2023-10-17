@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/styles/Details.module.css";
-import { Card, Col, Row, Typography } from "antd";
+import { Modal, Button, Card, Col, Row, Typography } from "antd";
 import {
   CheckCircleOutlined,
   CloseCircleOutlined,
   RightOutlined,
 } from "@ant-design/icons";
+import ServiceModal from "./ServiceModal";
 
 const ServiceDetails = ({ detailsService }) => {
   console.log(detailsService);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div className={styles.mainDetails} style={{ padding: "0 16px" }}>
-      <Row gutter={16}>
+      <Row gutter={16} justify="space-between">
         <Col className="gutter-row" span={12}>
           <Typography
             style={{
@@ -64,30 +75,25 @@ const ServiceDetails = ({ detailsService }) => {
           {/* END Warranty and Discount  */}
         </Col>
         <Col className="gutter-row" span={12}>
-          <Card className={styles.itemsContainer} style={{ maxWidth: 300 }}>
+          <Card className={styles.itemsContainer} style={{ maxWidth: 400 }}>
             {detailsService?.serviceTypes?.map((item) => (
               <div style={{}} key={item._id}>
-                <h5
-                  style={{
-                    backgroundColor: "white",
-                    color: "black",
-                    margin: 8,
-                    padding: 8,
-                    fontWeight: 500,
-                    fontFamily: "serif",
-                    fontSize: 14,
-                    borderRadius: 6,
-                    cursor: "pointer",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
+                <Button
+                  style={{ width: "100%" }}
+                  onClick={showModal}
+                  className={styles.cardModalBtn}
                 >
                   <span> {item.name}</span>
                   <span style={{ color: "#C71F66", fontWeight: 700 }}>
                     <RightOutlined />
                   </span>
-                </h5>
+                </Button>
+                <ServiceModal
+                  isModalOpen={isModalOpen}
+                  handleOk={handleOk}
+                  handleCancel={handleCancel}
+                  detailsService={detailsService}
+                />
               </div>
             ))}
           </Card>
