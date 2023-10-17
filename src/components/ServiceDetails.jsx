@@ -1,60 +1,98 @@
 import React from "react";
 import styles from "@/styles/Details.module.css";
-import { Col, Row, Typography } from "antd";
-import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import { Card, Col, Row, Typography } from "antd";
+import {
+  CheckCircleOutlined,
+  CloseCircleOutlined,
+  RightOutlined,
+} from "@ant-design/icons";
 
 const ServiceDetails = ({ detailsService }) => {
   console.log(detailsService);
   return (
     <div className={styles.mainDetails} style={{ padding: "0 16px" }}>
-      <Typography
-        style={{
-          fontFamily: "serif",
-          color: "#3749BB",
-          fontSize: 24,
-          paddingBottom: 4,
-        }}
-      >
-        {detailsService.title}
-      </Typography>
-      {/* END Title */}
-      <Typography
-        style={{
-          fontFamily: "serif",
-          fontWeight: 400,
-          fontSize: 16,
-          paddingBottom: 16,
-        }}
-      >
-        Category by {detailsService.category.name}{" "}
-      </Typography>{" "}
-      {/* END Category */}
-      <Typography style={{ fontFamily: "serif", paddingBottom: 8 }}>
-        <span
-          style={{
-            boxShadow:
-              "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
-            padding: 10,
-            borderRadius: 16,
-          }}
-        >
-          {" "}
-          Warranty {detailsService.warrantyTime} years
-        </span>
-        <span
-          style={{
-            boxShadow:
-              "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
-            padding: 10,
-            borderRadius: 16,
-            marginLeft: 4,
-          }}
-        >
-          {" "}
-          Discount {detailsService.discount} %
-        </span>
-      </Typography>{" "}
-      {/* END Warranty and Discount  */}
+      <Row gutter={16}>
+        <Col className="gutter-row" span={12}>
+          <Typography
+            style={{
+              fontFamily: "serif",
+              color: "#3749BB",
+              fontSize: 24,
+              paddingBottom: 4,
+              marginTop: 16,
+            }}
+          >
+            {detailsService.title}
+          </Typography>
+          {/* END Title */}
+          <Typography
+            style={{
+              fontFamily: "serif",
+              fontWeight: 400,
+              fontSize: 16,
+              paddingBottom: 16,
+            }}
+          >
+            Category by {detailsService.category.name}{" "}
+          </Typography>{" "}
+          {/* END Category */}
+          <Typography style={{ fontFamily: "serif", paddingBottom: 8 }}>
+            <span
+              style={{
+                boxShadow:
+                  "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
+                padding: 10,
+                borderRadius: 16,
+              }}
+            >
+              {" "}
+              Warranty {detailsService.warrantyTime} years
+            </span>
+            <span
+              style={{
+                boxShadow:
+                  "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
+                padding: 10,
+                borderRadius: 16,
+                marginLeft: 4,
+              }}
+            >
+              {" "}
+              Discount {detailsService.discount} %
+            </span>
+          </Typography>{" "}
+          {/* END Warranty and Discount  */}
+        </Col>
+        <Col className="gutter-row" span={12}>
+          <Card className={styles.itemsContainer} style={{ maxWidth: 300 }}>
+            {detailsService?.serviceTypes?.map((item) => (
+              <div style={{}} key={item._id}>
+                <h5
+                  style={{
+                    backgroundColor: "white",
+                    color: "black",
+                    margin: 8,
+                    padding: 8,
+                    fontWeight: 500,
+                    fontFamily: "serif",
+                    fontSize: 14,
+                    borderRadius: 6,
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <span> {item.name}</span>
+                  <span style={{ color: "#C71F66", fontWeight: 700 }}>
+                    <RightOutlined />
+                  </span>
+                </h5>
+              </div>
+            ))}
+          </Card>
+        </Col>
+      </Row>
       <Row gutter={16}>
         <Col className="gutter-row" span={12}>
           <div>
