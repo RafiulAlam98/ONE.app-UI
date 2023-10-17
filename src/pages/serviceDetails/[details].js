@@ -3,6 +3,9 @@ import { useGetSingleSubCategoryServiceQuery } from "@/redux/slice/subCategorySe
 import { Spin } from "antd";
 import { useRouter } from "next/router";
 import React from "react";
+import styles from "@/styles/Details.module.css";
+import DetailsHeader from "@/components/DetailsHeader";
+import Hero from "@/components/ui/Hero";
 
 const ServiceDetailsPage = () => {
   const router = useRouter();
@@ -13,11 +16,13 @@ const ServiceDetailsPage = () => {
     return <Spin />;
   }
 
-  console.log(data);
+  const detailsService = data.data;
+  console.log(data.data);
 
   return (
-    <div>
-      <h2>this is ServiceDetailsPage {router.query.details}</h2>
+    <div className={styles.mainContainer}>
+      <Hero detailsService={detailsService} />
+      <ServiceDetailsPage />
     </div>
   );
 };

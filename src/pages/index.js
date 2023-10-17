@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import MainLayout from "@/components/Layout/MainLayout";
-import HeroCarousel from "@/ui/Carousel";
-import Hero from "@/ui/Hero";
+import HeroCarousel from "@/components/ui/Carousel";
+import Hero from "@/components/ui/Hero";
 import Services from "@/components/Services";
 
 

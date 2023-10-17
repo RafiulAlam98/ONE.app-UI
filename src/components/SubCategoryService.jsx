@@ -1,5 +1,5 @@
 import { useGetAllSubCategoryServiceQuery } from "@/redux/slice/subCategoryService/subCategorySlice";
-import ServiceModalList from "@/ui/ServiceModalList";
+import ServiceModalList from "@/components/ui/ServiceModalList";
 import { Modal, Spin } from "antd";
 const { Content, Sider } = Layout;
 import { Layout, Menu, theme } from "antd";
