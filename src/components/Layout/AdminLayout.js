@@ -1,3 +1,4 @@
+import { SideBarItems } from "@/constants/SideBarItems";
 import {
   DesktopOutlined,
   FileOutlined,
@@ -18,59 +19,40 @@ function getItem(label, key, icon, children) {
 const items = [
   getItem("Option 1", "1", <PieChartOutlined />),
   getItem("Option 2", "2", <DesktopOutlined />),
-
   getItem("Files", "9", <FileOutlined />),
 ];
 
 const AdminLayout = ({ children }) => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
-  const headerStyle = {
-    textAlign: "center",
-    color: "#fff",
-    height: 64,
-    fontWeight: 600,
-    fontSize: 24,
-    paddingInline: 50,
-    lineHeight: "64px",
-    backgroundColor: "",
-  };
-  const contentStyle = {
-    textAlign: "center",
-    minHeight: "100vh",
-    lineHeight: "120px",
-    color: "",
-    backgroundColor: "#fff",
-  };
-  const siderStyle = {
-    textAlign: "center",
-    lineHeight: "120px",
-    color: "#fff",
-    backgroundColor: "",
-  };
-  const footerStyle = {
-    textAlign: "center",
-    color: "#fff",
-    backgroundColor: "#7dbcea",
-  };
+  const role = "admin";
   return (
     <div>
       <Layout>
-        <Header style={headerStyle}>ADMIN DASHBOARD</Header>
         <Layout hasSider>
-          <Content style={contentStyle}>{children}</Content>
-          <Sider style={siderStyle}>
+          <Content>{children}</Content>
+          <Sider
+            style={{
+              overflow: "auto",
+              height: "100vh",
+              position: "sticky",
+              top: 0,
+              bottom: 0,
+              left: 0,
+            }}
+          >
+            <h1
+              style={{ color: "white", textAlign: "center", padding: "16px 0" }}
+            >
+              ADMIN PANEL
+            </h1>
             <Menu
               theme="dark"
-              defaultSelectedKeys={["1"]}
+              defaultSelectedKeys={["users"]}
               mode="inline"
-              items={items}
+              items={SideBarItems(role)}
               style={{}}
             />
           </Sider>
         </Layout>
-        <Footer style={footerStyle}>Footer</Footer>
       </Layout>
     </div>
   );
