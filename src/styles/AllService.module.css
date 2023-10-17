@@ -1,0 +1,13 @@
+.serviceContainer {
+    border-right: 1px solid gray;
+}
+
+.serviceList {
+    font-weight: 500;
+}
+
+.serviceList:hover {
+    background-color: azure;
+    cursor: pointer;
+    font-weight: 700;
+}
