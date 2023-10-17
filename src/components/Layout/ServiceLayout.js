@@ -30,7 +30,7 @@ const items = [
   ]),
   getItem("Files", "9", <FileOutlined />),
 ];
-const ServiceLayout = () => {
+const ServiceLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -73,7 +73,7 @@ const ServiceLayout = () => {
               background: colorBgContainer,
             }}
           >
-            Bill is a cat.
+            {children}
           </div>
         </Content>
       </Layout>

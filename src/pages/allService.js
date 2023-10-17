@@ -50,7 +50,11 @@ const AllService = () => {
           {data.data.map((item) => (
             <div
               key={item._id}
-              style={{ padding: 16, marginTop: 16, textAlign: "left" }}
+              style={{
+                padding: 16,
+                marginTop: 16,
+                textAlign: "left",
+              }}
             >
               <div style={{ margin: 16 }}>
                 <Typography
