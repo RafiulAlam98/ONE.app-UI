@@ -36,13 +36,18 @@ const signup = () => {
       console.log("userSignUp", res.data.statusCode);
       if (res.data.statusCode === 200) {
         const res = await userLogin(data);
-        if (res.statusCode === 200) {
-          console.log(res.statusCode);
+        if (res.data.statusCode === 200) {
           const { accessToken, role, email } = res.data.data;
+          storeUserInfo(accessToken, role, email);
           setSuccessMessage(res.message);
-          storeUserInfo(accessToken, user, role);
-          router.push("/userProfile");
+          if (role === "user") {
+            router.push("/userProfile");
+          } else {
+            router.push("/admin");
+          }
+
           setLoading(false);
+          return <Alert message={res.message} type="success" />;
         }
       }
     } catch (error) {
@@ -60,127 +65,146 @@ const signup = () => {
           <ArrowLeftOutlined /> Back
         </h4>
       </Link>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
+      {loading ? (
+        <Spin
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        />
+      ) : (
         <div
           style={{
-            maxWidth: 400,
-            margin: "auto",
-            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-            padding: "8px 16px",
-            borderRadius: 10,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
           }}
         >
-          <Typography
+          <div
             style={{
-              textAlign: "center",
-              fontSize: 20,
-              color: "#6E58D8",
-              fontWeight: 600,
-              paddingBottom: 16,
+              maxWidth: 400,
+              margin: "auto",
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+              padding: "8px 16px",
+              borderRadius: 10,
             }}
           >
-            <span style={{ borderBottom: "2px solid" }}> SIGN UP</span>
-          </Typography>
+            <Typography
+              style={{
+                textAlign: "center",
+                fontSize: 20,
+                color: "#6E58D8",
+                fontWeight: 600,
+                paddingBottom: 16,
+              }}
+            >
+              <span style={{ borderBottom: "2px solid" }}> SIGN UP</span>
+            </Typography>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <label style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}>
-              Email
-            </label>
-            <input
-              {...register("email", { required: "Email Address is required" })}
-              placeholder="Enter Email "
-              style={{
-                marginBottom: 12,
-                width: "100%",
-                height: "24px",
-                borderRadius: "4px",
-              }}
-              type="email"
-              className={styles.customInput}
-            />
-            <label style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}>
-              Password
-            </label>
-            <input
-              {...register("password", { required: true })}
-              placeholder="Enter Password"
-              style={{
-                marginBottom: 12,
-                width: "100%",
-                height: "24px",
-                borderRadius: "4px",
-              }}
-              type="password"
-              className={styles.customInput}
-            />
-            {errors.exampleRequired && <span>Password Required</span>}
-            <label style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}>
-              Phone{" "}
-            </label>
-            <input
-              {...register("phoneNumber")}
-              placeholder="Enter Phone Number"
-              style={{
-                marginBottom: 12,
-                width: "100%",
-                height: "24px",
-                borderRadius: "4px",
-              }}
-              type="text"
-              className={styles.customInput}
-            />
-
-            {loading === true ? (
-              <Spin style={{ padding: 8 }} tip="Progressing" size="small">
-                <div className="content" />
-              </Spin>
-            ) : (
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <label
+                style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}
+              >
+                Email
+              </label>
               <input
+                {...register("email", {
+                  required: "Email Address is required",
+                })}
+                placeholder="Enter Email "
                 style={{
-                  backgroundColor: "#059862",
-                  border: "none",
-                  color: "white",
-                  padding: 8,
-                  marginTop: 8,
-                  marginBottom: 8,
-                  fontSize: 14,
-                  borderRadius: 6,
-                  width: 100,
+                  marginBottom: 12,
+                  width: "100%",
+                  height: "24px",
+                  borderRadius: "4px",
                 }}
-                className={styles.formBtn}
-                type="submit"
+                type="email"
+                className={styles.customInput}
               />
-            )}
-            {errorMessage ? (
-              <Text
-                style={{ display: "inline-block", padding: "8px" }}
-                type="danger"
+              <label
+                style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}
               >
-                {errorMessage}
-              </Text>
-            ) : (
-              <Text
-                style={{ display: "inline-block", padding: "8px" }}
-                type="success"
+                Password
+              </label>
+              <input
+                {...register("password", { required: true })}
+                placeholder="Enter Password"
+                style={{
+                  marginBottom: 12,
+                  width: "100%",
+                  height: "24px",
+                  borderRadius: "4px",
+                }}
+                type="password"
+                className={styles.customInput}
+              />
+              {errors.exampleRequired && <span>Password Required</span>}
+              <label
+                style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}
               >
-                {successMessage}
-              </Text>
-            )}
-            <Link style={{ textDecoration: "none" }} href="/login">
-              <Typography className={styles.formText}>
-                Already have an account? Sign In
-              </Typography>{" "}
-            </Link>
-          </form>
+                Phone{" "}
+              </label>
+              <input
+                {...register("phoneNumber")}
+                placeholder="Enter Phone Number"
+                style={{
+                  marginBottom: 12,
+                  width: "100%",
+                  height: "24px",
+                  borderRadius: "4px",
+                }}
+                type="text"
+                className={styles.customInput}
+              />
+
+              {loading === true ? (
+                <Spin style={{ padding: 8 }} tip="Progressing" size="small">
+                  <div className="content" />
+                </Spin>
+              ) : (
+                <input
+                  style={{
+                    backgroundColor: "#059862",
+                    border: "none",
+                    color: "white",
+                    padding: 8,
+                    marginTop: 8,
+                    marginBottom: 8,
+                    fontSize: 14,
+                    borderRadius: 6,
+                    width: 100,
+                  }}
+                  className={styles.formBtn}
+                  type="submit"
+                />
+              )}
+              {errorMessage ? (
+                <Text
+                  style={{ display: "inline-block", padding: "8px" }}
+                  type="danger"
+                >
+                  {errorMessage}
+                </Text>
+              ) : (
+                <Text
+                  style={{ display: "inline-block", padding: "8px" }}
+                  type="success"
+                >
+                  {successMessage}
+                </Text>
+              )}
+              <Link style={{ textDecoration: "none" }} href="/login">
+                <Typography className={styles.formText}>
+                  Already have an account? Sign In
+                </Typography>{" "}
+              </Link>
+            </form>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

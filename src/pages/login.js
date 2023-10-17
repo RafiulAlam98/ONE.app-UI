@@ -58,75 +58,84 @@ const login = () => {
           <ArrowLeftOutlined /> Back
         </h4>
       </Link>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
+      {loading ? (
+        <Spin
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        />
+      ) : (
         <div
           style={{
-            maxWidth: 400,
-            margin: "auto",
-            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-            padding: "8px 16px",
-            borderRadius: 10,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
           }}
         >
-          <Typography
+          <div
             style={{
-              textAlign: "center",
-              fontSize: 20,
-              color: "#6E58D8",
-              fontWeight: 600,
-              paddingBottom: 16,
+              maxWidth: 400,
+              margin: "auto",
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+              padding: "8px 16px",
+              borderRadius: 10,
             }}
           >
-            <span style={{ borderBottom: "2px solid" }}> SIGN IN</span>
-          </Typography>
-
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <label style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}>
-              Email
-            </label>
-            <input
-              {...register("email", {
-                required: "Email Address is required",
-              })}
-              placeholder="Enter Email "
+            <Typography
               style={{
-                marginBottom: 12,
-                width: "100%",
-                height: "24px",
-                borderRadius: "4px",
+                textAlign: "center",
+                fontSize: 20,
+                color: "#6E58D8",
+                fontWeight: 600,
+                paddingBottom: 16,
               }}
-              type="email"
-              className={styles.customInput}
-            />
-            <label style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}>
-              Password
-            </label>
-            <input
-              {...register("password", { required: true })}
-              placeholder="Enter Password"
-              style={{
-                marginBottom: 12,
-                width: "100%",
-                height: "24px",
-                borderRadius: "4px",
-              }}
-              type="password"
-              className={styles.customInput}
-            />
-            {errors.exampleRequired && <span>Password Required</span>}
+            >
+              <span style={{ borderBottom: "2px solid" }}> SIGN IN</span>
+            </Typography>
 
-            {loading === true ? (
-              <Spin style={{ padding: "8px 0" }} tip="Progressing" size="small">
-                <div className="content" />
-              </Spin>
-            ) : (
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <label
+                style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}
+              >
+                Email
+              </label>
+              <input
+                {...register("email", {
+                  required: "Email Address is required",
+                })}
+                placeholder="Enter Email "
+                style={{
+                  marginBottom: 12,
+                  width: "100%",
+                  height: "24px",
+                  borderRadius: "4px",
+                }}
+                type="email"
+                className={styles.customInput}
+              />
+              <label
+                style={{ fontSize: 14, fontWeight: 600, color: "#6E58D8" }}
+              >
+                Password
+              </label>
+              <input
+                {...register("password", { required: true })}
+                placeholder="Enter Password"
+                style={{
+                  marginBottom: 12,
+                  width: "100%",
+                  height: "24px",
+                  borderRadius: "4px",
+                }}
+                type="password"
+                className={styles.customInput}
+              />
+              {errors.exampleRequired && <span>Password Required</span>}
+
               <input
                 style={{
                   backgroundColor: "#059862",
@@ -142,24 +151,25 @@ const login = () => {
                 className={styles.formBtn}
                 type="submit"
               />
-            )}
-            {errorMessage ? (
-              <Text style={{ padding: "8px" }} type="danger">
-                {errorMessage}
-              </Text>
-            ) : (
-              <Text style={{ padding: "8px" }} type="success">
-                {successMessage}
-              </Text>
-            )}
-            <Link style={{ textDecoration: "none" }} href="/signup">
-              <Typography className={styles.formText}>
-                Not Have an Account? Sign Up
-              </Typography>{" "}
-            </Link>
-          </form>
+
+              {errorMessage ? (
+                <Text style={{ padding: "8px" }} type="danger">
+                  {errorMessage}
+                </Text>
+              ) : (
+                <Text style={{ padding: "8px" }} type="success">
+                  {successMessage}
+                </Text>
+              )}
+              <Link style={{ textDecoration: "none" }} href="/signup">
+                <Typography className={styles.formText}>
+                  Not Have an Account? Sign Up
+                </Typography>{" "}
+              </Link>
+            </form>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

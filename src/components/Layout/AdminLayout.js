@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { SideBarItems } from "@/constants/SideBarItems";
-import { isLoggedIn } from "@/services/auth.service";
+import { getUserInfo, isLoggedIn } from "@/services/auth.service";
 import {
   DesktopOutlined,
   FileOutlined,
@@ -27,12 +27,16 @@ const items = [
 
 const AdminLayout = ({ children }) => {
   const loggedInUser = isLoggedIn();
+  const user = getUserInfo();
+  console.log(user);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!loggedInUser) {
       router.push("/login");
+    } else if (user.role === "user") {
+      router.push("/userProfile");
     }
     setIsLoading(true);
   }, [router, isLoading]);
