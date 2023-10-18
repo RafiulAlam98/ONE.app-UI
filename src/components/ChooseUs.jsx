@@ -29,6 +29,7 @@ const ChooseUs = () => {
     <div
       style={{
         backgroundColor: "#DDE5ED",
+        paddingBottom: 100,
       }}
     >
       <div style={{ maxWidth: "1100px", margin: "0 auto", paddingBottom: 12 }}>

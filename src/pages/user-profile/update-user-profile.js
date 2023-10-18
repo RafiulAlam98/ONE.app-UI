@@ -12,7 +12,7 @@ import React from "react";
 const UpdateUserProfile = () => {
   const { data } = useGetUserProfileQuery();
   console.log(data?.data);
-  const previousData = data.data
+  const previousData = data?.data;
 
   const [updateUserProfile] = useUpdateUserProfileMutation();
   const onSubmit = async (data) => {
