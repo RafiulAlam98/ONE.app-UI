@@ -14,7 +14,7 @@ const ViewProfile = () => {
   console.log(data);
   const route = `/admin/update-admin-profile`;
 
-  const profile = data?.data;
+  const ViewProfile = data?.data;
   return (
     <div>
       <div style={{ padding: "20px 32px" }}>
@@ -54,6 +54,8 @@ const ViewProfile = () => {
 };
 
 export default ViewProfile;
+
+
 ViewProfile.getLayout = function getLayout(page) {
   return <AdminLayout>{page}</AdminLayout>;
 };

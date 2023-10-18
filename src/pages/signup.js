@@ -41,7 +41,7 @@ const signup = () => {
           storeUserInfo(accessToken, role, email);
           setSuccessMessage(res.message);
           if (role === "user") {
-            router.push("/userProfile");
+            router.push("/user-profile");
           } else {
             router.push("/admin");
           }

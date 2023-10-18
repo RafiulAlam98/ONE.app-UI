@@ -58,7 +58,7 @@ const UserDashboardLayout = ({ children }) => {
         </h1>
         <Menu
           theme="dark"
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={["account"]}
           mode="inline"
           items={UserSidebarItems()}
           style={{}}

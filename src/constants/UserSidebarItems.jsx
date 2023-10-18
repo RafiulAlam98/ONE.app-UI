@@ -17,7 +17,7 @@ export const UserSidebarItems = (role) => {
   const defaultSidebarItems = [
     {
       label: <Link href="/user-profile/view-profile">Account </Link>,
-      key: "profile",
+      key: "account",
       icon: <UserOutlined />,
     },
     {

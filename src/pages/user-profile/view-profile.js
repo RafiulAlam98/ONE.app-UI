@@ -1,4 +1,5 @@
 import Profile from "@/components/Profile/Profile";
+import UserDashboardLayout from "@/components/Layout/UserDashboardLayout";
 import { useGetUserProfileQuery } from "@/redux/slice/api/userApi";
 import { HomeOutlined } from "@ant-design/icons";
 import { Breadcrumb, Spin } from "antd";
@@ -52,3 +53,8 @@ const UserProfileView = () => {
 };
 
 export default UserProfileView;
+
+UserProfileView.getLayout = function getLayout(page) {
+  return <UserDashboardLayout>{page}</UserDashboardLayout>;
+};
+

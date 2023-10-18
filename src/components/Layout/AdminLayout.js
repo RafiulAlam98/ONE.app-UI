@@ -35,7 +35,7 @@ const AdminLayout = ({ children }) => {
     if (!loggedInUser) {
       router.push("/login");
     } else if (user.role === "user") {
-      router.push("/userProfile");
+      router.push("/user-profile");
     }
     setIsLoading(true);
   }, [router, isLoading]);
