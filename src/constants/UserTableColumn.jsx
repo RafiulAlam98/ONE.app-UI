@@ -1,4 +1,4 @@
-import { Space, Table, Tag } from "antd";
+import { Button, Space, Table, Tag } from "antd";
 
 export const UserTableColumn = () => {
   const columns = [
@@ -18,9 +18,24 @@ export const UserTableColumn = () => {
       key: "address",
     },
     {
+      title: "Role",
+      dataIndex: "role",
+      key: "role",
+    },
+    {
       title: "CreatedAt",
       dataIndex: "createdAt",
       key: "createdAt",
+    },
+    {
+      title: "Action",
+      render: function (data) {
+        return (
+          <Button onClick={() => console.log(data)} type="primary">
+            Action
+          </Button>
+        );
+      },
     },
   ];
   return columns;
