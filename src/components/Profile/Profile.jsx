@@ -40,7 +40,7 @@ const Profile = ({ user, route }) => {
                   />
                 </div>
               ) : (
-                <Avatar size={64} icon={<UserOutlined />} />
+                <Avatar size={84} icon={<UserOutlined />} />
               )}
             </div>
             <Button style={{ margin: "0 16px", width: 100 }} type="primary">

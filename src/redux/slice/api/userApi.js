@@ -66,6 +66,14 @@ const userApi = api.injectEndpoints({
       }),
       providesTags: ["users"],
     }),
+    updateUserProfile: builder.mutation({
+      query: (data) => ({
+        url: `/api/v1/users/update-my-profile`,
+        method: "PATCH",
+        headers: headers,
+      }),
+      providesTags: ["users"],
+    }),
   }),
 });
 
@@ -77,4 +85,5 @@ export const {
   useUpdateUserMutation,
   useDeleteUserMutation,
   useGetUserProfileQuery,
+  useUpdateUserProfileMutation,
 } = userApi;

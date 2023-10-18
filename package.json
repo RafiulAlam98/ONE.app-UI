@@ -11,6 +11,8 @@
   "dependencies": {
     "@ant-design/cssinjs": "^1.17.0",
     "@ant-design/icons": "^5.2.6",
+    "@cloudinary/react": "^1.11.2",
+    "@cloudinary/url-gen": "^1.11.2",
     "@reduxjs/toolkit": "^1.9.7",
     "antd": "^5.10.0",
     "axios": "^1.5.1",

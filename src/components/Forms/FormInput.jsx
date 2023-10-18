@@ -10,6 +10,7 @@ const FormInput = ({
   placeholder,
   validation,
   label,
+  defaultValue,
 }) => {
   const { control } = useFormContext();
   return (
@@ -28,6 +29,7 @@ const FormInput = ({
             size={size}
             type={type}
             {...field}
+            defaultValue={defaultValue ? defaultValue : ""}
             value={value ? value : field.value}
           />
         )}

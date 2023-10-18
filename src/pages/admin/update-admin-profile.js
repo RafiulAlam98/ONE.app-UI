@@ -2,16 +2,31 @@ import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import AdminLayout from "@/components/Layout/AdminLayout";
 import Update from "@/components/Profile/Update";
+import {
+  useGetUserProfileQuery,
+  useUpdateUserProfileMutation,
+} from "@/redux/slice/api/userApi";
 import { HomeOutlined } from "@ant-design/icons";
-import { Breadcrumb, Button, Col, Row, Typography } from "antd";
+import { Breadcrumb } from "antd";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
 
 const UpdateProfile = () => {
+  const { data } = useGetUserProfileQuery();
+  console.log(data?.data);
+  const previousData = data.data;
+
+  const [updateUserProfile] = useUpdateUserProfileMutation();
   const onSubmit = async (data) => {
     try {
-      console.log(data);
+      const res = await updateUserProfile(data);
+      console.log(res);
+      if (res.data.data.statusCode === 200) {
+        return messageApi.open({
+          type: "success",
+          content: `${res.data.data.message}`,
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -32,12 +47,14 @@ const UpdateProfile = () => {
               title: "Admin",
             },
             {
-              title: <Link href="/admin/update-admin-profile">Add User</Link>,
+              title: (
+                <Link href="/admin/update-admin-profile">Update Account</Link>
+              ),
             },
           ]}
         />
       </div>
-      <Update onSubmit={onSubmit} />
+      <Update data={previousData} onSubmit={onSubmit} />
     </div>
   );
 };

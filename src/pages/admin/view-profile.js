@@ -11,10 +11,10 @@ const ViewProfile = () => {
   if (isLoading) {
     return <Spin />;
   }
-  console.log(data);
-  const route = `/admin/update-admin-profile`;
 
-  const ViewProfile = data?.data;
+  const route = `/admin/update-admin-profile`;
+  const user = data?.data;
+  console.log(user);
   return (
     <div>
       <div style={{ padding: "20px 32px" }}>
@@ -36,7 +36,7 @@ const ViewProfile = () => {
           ]}
         />
       </div>
-      {isLoading && (
+      {isLoading ? (
         <Spin
           style={{
             display: "flex",
@@ -45,10 +45,9 @@ const ViewProfile = () => {
             height: "100vh",
           }}
         />
+      ) : (
+        <Profile key={user?._id} user={user} route={route} />
       )}
-      {profile?.map((user) => (
-        <Profile key={user._id} user={user} route={route} />
-      ))}
     </div>
   );
 };

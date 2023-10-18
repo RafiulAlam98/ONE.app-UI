@@ -12,7 +12,8 @@ const UserProfileView = () => {
     return <Spin />;
   }
   console.log(data);
-  const profile = data?.data;
+  const user = data?.data;
+  console.log(user);
   const route = `/user-profile/update-user-profile`;
   return (
     <div>
@@ -27,10 +28,10 @@ const UserProfileView = () => {
               ),
             },
             {
-              title: "Admin",
+              title: "User",
             },
             {
-              title: <Link href="/admin/view-profile">Account</Link>,
+              title: <Link href="/user-profile/view-profile">Account</Link>,
             },
           ]}
         />
@@ -45,9 +46,8 @@ const UserProfileView = () => {
           }}
         />
       )}
-      {profile?.map((user) => (
-        <Profile key={user._id} user={user} route={route} />
-      ))}
+
+      <Profile key={user._id} user={user} route={route} />
     </div>
   );
 };
