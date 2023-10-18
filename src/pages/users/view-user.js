@@ -1,6 +1,6 @@
 import AdminLayout from "@/components/Layout/AdminLayout";
 import { HomeOutlined } from "@ant-design/icons";
-import { Breadcrumb, Spin, Table } from "antd";
+import { Breadcrumb, Button, Spin, Table } from "antd";
 import Link from "next/link";
 
 import { useGetAllUserQuery } from "@/redux/slice/api/userApi";
@@ -8,7 +8,7 @@ import { UserTableColumn } from "@/constants/userTableColumn";
 
 const ViewUser = () => {
   const { data, isLoading } = useGetAllUserQuery();
- 
+
   console.log(data);
 
   return (
@@ -31,6 +31,11 @@ const ViewUser = () => {
             },
           ]}
         />
+      </div>
+      <div style={{ margin: "4px 32px" }}>
+        <Button type="primary">
+          <Link href="/users/add-user">Add User</Link>
+        </Button>
       </div>
 
       {isLoading && (

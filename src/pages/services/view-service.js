@@ -3,7 +3,7 @@ import { ServiceTableColumn } from "@/constants/ServiceTableColumn";
 import { UserTableColumn } from "@/constants/UserTableColumn";
 import { useGetAllServicesQuery } from "@/redux/slice/api/servicesApi";
 import { HomeOutlined } from "@ant-design/icons";
-import { Breadcrumb, Spin, Table } from "antd";
+import { Breadcrumb, Button, Spin, Table } from "antd";
 import Link from "next/link";
 import React from "react";
 
@@ -30,6 +30,11 @@ const ViewService = () => {
             },
           ]}
         />
+      </div>
+      <div style={{ margin: "4px 32px" }}>
+        <Button type="primary">
+          <Link href="/services/add-service">Add Service</Link>
+        </Button>
       </div>
 
       {isLoading && (

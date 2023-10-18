@@ -21,12 +21,12 @@ export const SideBarItems = (role) => {
       icon: <UserOutlined />,
       children: [
         {
-          label: <Link href="/profile/view-profile">View Profile</Link>,
-          key: "view profile",
+          label: <Link href="/admin/view-profile">My Account </Link>,
+          key: "account profile",
           icon: <UserOutlined />,
         },
         {
-          label: <Link href="/profile/update-profile">Update Profile</Link>,
+          label: <Link href="/admin/update-profile">Update Account</Link>,
           key: "update profile",
           icon: <UserOutlined />,
         },
@@ -38,21 +38,15 @@ export const SideBarItems = (role) => {
       icon: <UsergroupAddOutlined />,
       children: [
         {
-          label: <Link href="/users/add-user">Add User</Link>,
-          key: "add user",
-          icon: <UserAddOutlined />,
-        },
-        {
-          label: <Link href="/users/view-user">View User</Link>,
+          label: <Link href="/users/view-user">View </Link>,
           key: "view user",
           icon: <UserOutlined />,
         },
         {
-          label: <Link href="/users/update-user">Update User</Link>,
+          label: <Link href="/users/update-user">Update </Link>,
           key: "update user",
           icon: <UserOutlined />,
         },
-
       ],
     },
     {
@@ -61,23 +55,30 @@ export const SideBarItems = (role) => {
       icon: <UnorderedListOutlined />,
       children: [
         {
-          label: <Link href="/services/add-service">Add Service</Link>,
-          key: "add service",
-          icon: <StockOutlined />,
-        },
-        {
-          label: <Link href="/services/view-service">View Service</Link>,
+          label: <Link href="/services/view-service">View </Link>,
           key: "view service",
           icon: <StockOutlined />,
         },
         {
-          label: <Link href="/services/update-service">Update Service</Link>,
+          label: <Link href="/services/update-service">Update </Link>,
           key: "update service",
           icon: <StockOutlined />,
         },
+      ],
+    },
+    {
+      label: "Sub Category",
+      key: "sub-category",
+      icon: <UnorderedListOutlined />,
+      children: [
         {
-          label: <Link href="/services/delete-user">Delete Service</Link>,
-          key: "delete service",
+          label: <Link href="/sub-category/view">View </Link>,
+          key: "view sub-category",
+          icon: <StockOutlined />,
+        },
+        {
+          label: <Link href="/sub-category/update">Update </Link>,
+          key: "update sub-category",
           icon: <StockOutlined />,
         },
       ],
@@ -88,23 +89,13 @@ export const SideBarItems = (role) => {
       icon: <ExportOutlined />,
       children: [
         {
-          label: <Link href="/faq/add-faq">Add Faq</Link>,
-          key: "add faq",
-          icon: <QuestionCircleOutlined />,
-        },
-        {
-          label: <Link href="/faq/view-faq">View Faq</Link>,
+          label: <Link href="/faq/view-faq">View </Link>,
           key: "view faq",
           icon: <QuestionCircleOutlined />,
         },
         {
-          label: <Link href="/faq/update-faq">Update Faq</Link>,
+          label: <Link href="/faq/update-faq">Update</Link>,
           key: "update faq",
-          icon: <QuestionCircleOutlined />,
-        },
-        {
-          label: <Link href="/faq/delete-user">Delete Faq</Link>,
-          key: "delete faq",
           icon: <QuestionCircleOutlined />,
         },
       ],
@@ -115,23 +106,13 @@ export const SideBarItems = (role) => {
       icon: <DeploymentUnitOutlined />,
       children: [
         {
-          label: <Link href="/faq/add-blog">Add Blog</Link>,
-          key: "add blog",
-          icon: <ContainerOutlined />,
-        },
-        {
-          label: <Link href="/blog/view-blog">View Blog</Link>,
+          label: <Link href="/blog/view-blog">View </Link>,
           key: "view blog",
           icon: <ContainerOutlined />,
         },
         {
-          label: <Link href="/blog/update-blog">Update Blog</Link>,
+          label: <Link href="/blog/update-blog">Update </Link>,
           key: "update blog",
-          icon: <ContainerOutlined />,
-        },
-        {
-          label: <Link href="/blog/delete-user">Delete Blog</Link>,
-          key: "delete blog",
           icon: <ContainerOutlined />,
         },
       ],
