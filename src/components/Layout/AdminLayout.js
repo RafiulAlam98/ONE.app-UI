@@ -28,7 +28,6 @@ const items = [
 const AdminLayout = ({ children }) => {
   const loggedInUser = isLoggedIn();
   const user = getUserInfo();
-  console.log(user);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 

@@ -1,4 +1,4 @@
-import { Input } from "antd";
+import { Input, Typography } from "antd";
 import { Controller, useFormContext } from "react-hook-form";
 
 const FormInput = ({
@@ -14,7 +14,11 @@ const FormInput = ({
   const { control } = useFormContext();
   return (
     <>
-      {label ? label : null}
+      <Typography
+        style={{ fontSize: 12, fontWeight: 500, fontFamily: "serif" }}
+      >
+        {label ? label : null}
+      </Typography>
       <Controller
         control={control}
         name={name}
