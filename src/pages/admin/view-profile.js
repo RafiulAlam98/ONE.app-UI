@@ -1,6 +1,9 @@
 import AdminLayout from "@/components/Layout/AdminLayout";
+import Profile from "@/components/Profile/Profile";
 import { useGetUserProfileQuery } from "@/redux/slice/api/userApi";
-import { Spin } from "antd";
+import { HomeOutlined } from "@ant-design/icons";
+import { Breadcrumb, Spin } from "antd";
+import Link from "next/link";
 import React from "react";
 
 const ViewProfile = () => {
@@ -9,8 +12,30 @@ const ViewProfile = () => {
     return <Spin />;
   }
   console.log(data);
+  const route = `/admin/update-admin-profile`;
+
+  const profile = data?.data;
   return (
     <div>
+      <div style={{ padding: "20px 32px" }}>
+        <Breadcrumb
+          items={[
+            {
+              title: (
+                <Link href="/">
+                  <HomeOutlined />
+                </Link>
+              ),
+            },
+            {
+              title: "Admin",
+            },
+            {
+              title: <Link href="/admin/view-profile">Account</Link>,
+            },
+          ]}
+        />
+      </div>
       {isLoading && (
         <Spin
           style={{
@@ -21,6 +46,9 @@ const ViewProfile = () => {
           }}
         />
       )}
+      {profile?.map((user) => (
+        <Profile key={user._id} user={user} route={route} />
+      ))}
     </div>
   );
 };
