@@ -1,10 +1,26 @@
 import AdminLayout from "@/components/Layout/AdminLayout";
+import { useGetUserProfileQuery } from "@/redux/slice/api/userApi";
+import { Spin } from "antd";
 import React from "react";
 
 const ViewProfile = () => {
+  const { data, isLoading } = useGetUserProfileQuery();
+  if (isLoading) {
+    return <Spin />;
+  }
+  console.log(data);
   return (
     <div>
-      <h1>Account Profile</h1>
+      {isLoading && (
+        <Spin
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        />
+      )}
     </div>
   );
 };

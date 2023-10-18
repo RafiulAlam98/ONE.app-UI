@@ -16,21 +16,9 @@ import Link from "next/link";
 export const SideBarItems = (role) => {
   const defaultSidebarItems = [
     {
-      label: "Profile",
+      label: <Link href="/admin/view-profile">Account </Link>,
       key: "profile",
       icon: <UserOutlined />,
-      children: [
-        {
-          label: <Link href="/admin/view-profile">My Account </Link>,
-          key: "account profile",
-          icon: <UserOutlined />,
-        },
-        {
-          label: <Link href="/admin/update-profile">Update Account</Link>,
-          key: "update profile",
-          icon: <UserOutlined />,
-        },
-      ],
     },
     {
       label: "Users",
