@@ -1,14 +1,11 @@
-import Form from "@/components/Forms/Form";
-import FormInput from "@/components/Forms/FormInput";
-import AdminLayout from "@/components/Layout/AdminLayout";
+import UserDashboardLayout from "@/components/Layout/UserDashboardLayout";
 import Update from "@/components/Profile/Update";
 import { HomeOutlined } from "@ant-design/icons";
-import { Breadcrumb, Button, Col, Row, Typography } from "antd";
+import { Breadcrumb } from "antd";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
 
-const UpdateProfile = () => {
+const UpdateUserProfile = () => {
   const onSubmit = async (data) => {
     try {
       console.log(data);
@@ -29,10 +26,14 @@ const UpdateProfile = () => {
               ),
             },
             {
-              title: "Admin",
+              title: "User",
             },
             {
-              title: <Link href="/admin/update-admin-profile">Add User</Link>,
+              title: (
+                <Link href="/user-profile/update-user-profile">
+                  Update User
+                </Link>
+              ),
             },
           ]}
         />
@@ -42,7 +43,8 @@ const UpdateProfile = () => {
   );
 };
 
-export default UpdateProfile;
-UpdateProfile.getLayout = function getLayout(page) {
-  return <AdminLayout>{page}</AdminLayout>;
+export default UpdateUserProfile;
+
+UpdateUserProfile.getLayout = function getLayout(page) {
+  return <UserDashboardLayout>{page}</UserDashboardLayout>;
 };

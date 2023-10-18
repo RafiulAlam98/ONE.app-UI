@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { SideBarItems } from "@/constants/SideBarItems";
+import { AdminSidebarItems } from "@/constants/AdminSideBarItems";
 import { getUserInfo, isLoggedIn } from "@/services/auth.service";
 import {
   DesktopOutlined,
@@ -74,7 +74,7 @@ const AdminLayout = ({ children }) => {
               theme="dark"
               defaultSelectedKeys={["profile"]}
               mode="inline"
-              items={SideBarItems(role)}
+              items={AdminSidebarItems(role)}
             />
           </Sider>
         </Layout>

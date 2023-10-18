@@ -112,7 +112,7 @@ const Header = () => {
           )}
           <div>
             {loggedInUser === "user" ? (
-              <Link href="/userProfile">
+              <Link href="/user-profile">
                 <Avatar size="large" icon={<UserOutlined />} />
               </Link>
             ) : (

@@ -36,7 +36,7 @@ const login = () => {
         setSuccessMessage(res.message);
         console.log(user);
         if (role === "user") {
-          router.push("/userProfile");
+          router.push("/user-profile");
         } else {
           router.push("/admin");
         }

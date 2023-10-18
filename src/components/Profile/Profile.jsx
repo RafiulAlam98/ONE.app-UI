@@ -50,7 +50,7 @@ const Profile = ({ user, route }) => {
           <Col className="gutter-row" span={12}>
             <div style={{ marginTop: 30 }}>
               <Typography style={{ fontSize: 24, fontFamily: "serif" }}>
-                {name.firstName} {name.lastName} <br />
+                {name?.firstName} {name?.lastName} <br />
                 <span>role as {role}</span>
               </Typography>
               <Typography style={{ fontSize: 24, fontFamily: "serif" }}>

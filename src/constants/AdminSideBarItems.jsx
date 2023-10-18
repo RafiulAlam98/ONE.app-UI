@@ -13,7 +13,7 @@ import {
 import { Avatar } from "antd";
 import Link from "next/link";
 
-export const SideBarItems = (role) => {
+export const AdminSidebarItems = (role) => {
   const defaultSidebarItems = [
     {
       label: <Link href="/admin/view-profile">Account </Link>,
