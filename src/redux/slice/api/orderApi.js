@@ -27,8 +27,8 @@ const orderApi = api.injectEndpoints({
       invalidatesTags: ["order"],
     }),
     getSingleOrder: builder.query({
-      query: ({ id }) => ({
-        url: `/api/v1/order/${id}`,
+      query: ({ email }) => ({
+        url: `/api/v1/order/${email}`,
         method: "GET",
         headers: headers,
       }),
