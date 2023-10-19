@@ -1,24 +1,23 @@
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
-import AdminLayout from "@/components/Layout/AdminLayout";
-import UploadImage from "@/components/ui/UploadImage";
-import { useUserSignupMutation } from "@/redux/slice/api/userApi";
+import SuperAdminLayout from "@/components/Layout/SuperAdminLayout";
+import { useAddAdminMutation } from "@/redux/slice/api/adminApi";
 import { HomeOutlined } from "@ant-design/icons";
 import { Breadcrumb, Button, Col, Row, Typography } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
-const AddUser = () => {
+const CreateAdmin = () => {
   const router = useRouter();
-  const [userSignup] = useUserSignupMutation();
+  const [addAdmin] = useAddAdminMutation();
   const onSubmit = async (data) => {
     try {
       console.log(data);
-      const res = await userSignup(data);
+      const res = await addAdmin(data);
       console.log(res);
       if (res.data.statusCode === 200) {
-        router.push("/users/view-user");
+        router.push("/super-admin/view-admins");
       }
     } catch (error) {
       console.log(error);
@@ -37,10 +36,10 @@ const AddUser = () => {
               ),
             },
             {
-              title: "User",
+              title: "Super Admin",
             },
             {
-              title: <Link href="/users/add-user">Add User</Link>,
+              title: <Link href="/super-admin/create-admin">Create Admin</Link>,
             },
           ]}
         />
@@ -48,7 +47,7 @@ const AddUser = () => {
       <div>
         <div>
           <Typography style={{ fontSize: 22, fontWeight: 700 }}>
-            Create User
+            Create New Admin
           </Typography>
         </div>
         <Form submitHandler={onSubmit}>
@@ -146,8 +145,7 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
-
-AddUser.getLayout = function getLayout(page) {
-  return <AdminLayout>{page}</AdminLayout>;
+export default CreateAdmin;
+CreateAdmin.getLayout = function getLayout(page) {
+  return <SuperAdminLayout>{page}</SuperAdminLayout>;
 };

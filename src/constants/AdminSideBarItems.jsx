@@ -5,8 +5,7 @@ import {
   QuestionCircleOutlined,
   StockOutlined,
   UnorderedListOutlined,
-  UserAddOutlined,
-  UserDeleteOutlined,
+
   UserOutlined,
   UsergroupAddOutlined,
 } from "@ant-design/icons";

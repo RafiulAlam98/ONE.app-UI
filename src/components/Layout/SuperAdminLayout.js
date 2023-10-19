@@ -1,11 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { AdminSidebarItems } from "@/constants/AdminSideBarItems";
+import SuperAdminSidebarItems from "@/constants/SuperAdminSidebarItems";
 import { getUserInfo, isLoggedIn } from "@/services/auth.service";
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-} from "@ant-design/icons";
+
 import { Layout, Menu, theme } from "antd";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -19,13 +14,7 @@ function getItem(label, key, icon, children) {
   };
 }
 
-const items = [
-  getItem("Option 1", "1", <PieChartOutlined />),
-  getItem("Option 2", "2", <DesktopOutlined />),
-  getItem("Files", "9", <FileOutlined />),
-];
-
-const AdminLayout = ({ children }) => {
+const SuperAdminLayout = ({ children }) => {
   const loggedInUser = isLoggedIn();
   const user = getUserInfo();
   const router = useRouter();
@@ -36,6 +25,8 @@ const AdminLayout = ({ children }) => {
       router.push("/login");
     } else if (user.role === "user") {
       router.push("/user-profile");
+    } else if (user.role === "admin") {
+      router.push("/admin");
     }
     setIsLoading(true);
   }, [router, isLoading]);
@@ -43,7 +34,7 @@ const AdminLayout = ({ children }) => {
   if (!isLoading) {
     return <p>Loading</p>;
   }
-  const role = "admin";
+  const role = "super_admin";
   return (
     <div>
       <Layout>
@@ -68,13 +59,13 @@ const AdminLayout = ({ children }) => {
             <h1
               style={{ color: "white", textAlign: "center", padding: "16px 0" }}
             >
-              ADMIN PANEL
+              SUPER ADMIN PANEL
             </h1>
             <Menu
               theme="dark"
               defaultSelectedKeys={["profile"]}
               mode="inline"
-              items={AdminSidebarItems(role)}
+              items={SuperAdminSidebarItems(role)}
             />
           </Sider>
         </Layout>
@@ -83,4 +74,4 @@ const AdminLayout = ({ children }) => {
   );
 };
 
-export default AdminLayout;
+export default SuperAdminLayout;
