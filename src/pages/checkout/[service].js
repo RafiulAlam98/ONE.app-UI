@@ -1,3 +1,4 @@
+import CheckoutDrawer from "@/components/Drawer/Drawer";
 import MainLayout from "@/components/Layout/MainLayout";
 import { useRouter } from "next/router";
 import React from "react";
@@ -7,6 +8,7 @@ const CheckoutService = () => {
   return (
     <div>
       <h2>{router.query.service}</h2>
+      <CheckoutDrawer />
     </div>
   );
 };
