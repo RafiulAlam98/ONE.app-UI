@@ -7,6 +7,7 @@ import styles from "@/styles/Details.module.css";
 
 import Hero from "@/components/ui/Hero";
 import ServiceDetails from "@/components/ServiceDetails";
+import { useAddReviewMutation } from "@/redux/slice/api/reviewApi";
 
 const ServiceDetailsPage = () => {
   const router = useRouter();
@@ -18,7 +19,7 @@ const ServiceDetailsPage = () => {
   }
 
   const detailsService = data?.data;
-
+  console.log(detailsService);
 
   return (
     <div className={styles.mainContainer}>

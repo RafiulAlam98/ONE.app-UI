@@ -3,7 +3,7 @@ import UserDashboardLayout from "@/components/Layout/UserDashboardLayout";
 const UserProfile = () => {
   return (
     <div>
-      <h2>this is userprofile page</h2>
+      <h1 style={{ color: "tomato" }}>Welcome To User Profle</h1>
     </div>
   );
 };

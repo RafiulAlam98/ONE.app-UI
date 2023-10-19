@@ -46,7 +46,19 @@ const AllService = () => {
             )}
           />
         </Col>
-        <Col md={16} lg={16} span={16}>
+        <Col
+          style={{
+            overflow: "auto",
+            height: "100vh",
+            position: "sticky",
+            top: 0,
+            bottom: 0,
+            left: 0,
+          }}
+          md={16}
+          lg={16}
+          span={16}
+        >
           {data.data.map((item) => (
             <div
               key={item._id}

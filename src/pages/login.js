@@ -34,7 +34,6 @@ const login = () => {
         const { accessToken, role, email } = res.data.data;
         storeUserInfo(accessToken, role, email);
         setSuccessMessage(res.message);
-        console.log(user);
         if (role === "user") {
           router.push("/user-profile");
         } else {
