@@ -2,28 +2,20 @@ import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import AdminLayout from "@/components/Layout/AdminLayout";
 import UploadImage from "@/components/ui/UploadImage";
+import { useAddServicesMutation } from "@/redux/slice/api/servicesApi";
 import { HomeOutlined } from "@ant-design/icons";
-import { Breadcrumb, Button, Col, Row, Typography } from "antd";
+import { Alert, Breadcrumb, Button, Col, Row, Typography } from "antd";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const AddService = () => {
-  const imageKey = process.env.REACT_APP_imgbb_key;
-  const onSubmit = (data) => {
+  const [addServices] = useAddServicesMutation();
+  const [message, setMessage] = useState("");
+  const onSubmit = async (data) => {
     try {
-      const image = data.image[0];
-      const formData = new FormData();
-      formData.append("image", image);
-      console.log(formData);
-      const url = `https://api.imgbb.com/1/upload?key=838f11982bf963cc55011a4e344c5953`;
-      fetch(url, {
-        method: "POST",
-        body: formData,
-      })
-        .then((res) => res.json())
-        .then((imgData) => {
-          console.log(imgData);
-        });
+      const res = await addServices(data);
+      console.log(res);
+      setMessage(res.data.message);
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +71,7 @@ const AddService = () => {
                 <FormInput
                   name="image"
                   label="Image"
-                  type="file"
+                  type="string"
                   size="small"
                   style={{ width: 64 }}
                 />
@@ -96,6 +88,9 @@ const AddService = () => {
           </div>
         </Form>
       </div>
+      {message && (
+        <Alert style={{ margin: 16 }} message={message} type="success" />
+      )}
     </div>
   );
 };
