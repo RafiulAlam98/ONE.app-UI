@@ -14,10 +14,7 @@ const FormSelectField = ({
   defaultValue,
 }) => {
   const { control } = useFormContext();
-    console.log(options);
-    const modifyHandler = () => {
-        
-    }
+
   return (
     <>
       {label ? label : null}
@@ -30,21 +27,36 @@ const FormSelectField = ({
             size={size}
             options={[
               {
-                value: "jack",
-                label: "Jack",
+                value: "9.0 - 10.00 AM",
+                label: "9.0 - 10.00 AM",
               },
               {
-                value: "lucy",
-                label: "Lucy",
+                value: "10.00 - 11.00 AM",
+                label: "10.00 - 11.00 AM",
               },
               {
-                value: "Yiminghe",
-                label: "yiminghe",
+                value: "11.00 - 12.00 AM",
+                label: "11.00 - 12.00 AM",
               },
               {
-                value: "disabled",
-                label: "Disabled",
-                disabled: true,
+                value: "12.00 - 01.00 PM",
+                label: "12.00 - 01.00 PM",
+              },
+              {
+                value: "04.00 - 05.00 PM",
+                label: "04.00 - 05.00 PM",
+              },
+              {
+                value: "05.00 - 06.00 PM",
+                label: "05.00 - 06.00 PM",
+              },
+              {
+                value: "06.00 - 07.00 PM",
+                label: "06.00 - 07.00 PM",
+              },
+              {
+                value: "07.00 - 08.00 PM",
+                label: "07.00 - 08.00 PM",
               },
             ]}
             value={value}

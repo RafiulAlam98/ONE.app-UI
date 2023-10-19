@@ -11,7 +11,6 @@ import React from "react";
 
 const AddUser = () => {
   const router = useRouter();
-  const imageKey = process.env.REACT_APP_imgbb_key;
   const [userSignup] = useUserSignupMutation();
   const onSubmit = async (data) => {
     try {
