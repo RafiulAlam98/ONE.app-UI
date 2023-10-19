@@ -17,8 +17,8 @@ const ServiceDetailsPage = () => {
     return <Spin />;
   }
 
-  const detailsService = data.data;
-  console.log(data.data);
+  const detailsService = data?.data;
+
 
   return (
     <div className={styles.mainContainer}>

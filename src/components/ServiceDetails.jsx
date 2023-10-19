@@ -83,7 +83,7 @@ const ServiceDetails = ({ detailsService }) => {
                   onClick={showModal}
                   className={styles.cardModalBtn}
                 >
-                  <span> {item.name}</span>
+                  <span> {item.name.slice(0, 25)}..</span>
                   <span style={{ color: "#C71F66", fontWeight: 700 }}>
                     <RightOutlined />
                   </span>

@@ -4,11 +4,7 @@ import Footer from "../shared/Footer";
 
 const { Content } = Layout;
 
-const contentStyle = {
-  minHeight: "100vh",
-  lineHeight: "120px",
-  backgroundColor: "#FFFFFF",
-};
+
 
 const MainLayout = ({ children }) => {
   return (

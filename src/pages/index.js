@@ -13,9 +13,17 @@ import { useState } from "react";
 import ChooseUs from "@/components/ChooseUs";
 import { getBaseUrl } from "@/helpers/config/envConfig";
 import CallUs from "@/components/CallUs";
+import { useGetAllServicesQuery } from "@/redux/slice/api/servicesApi";
+import { Spin } from "antd";
 
-export default function HomePage({ services }) {
+export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { data, isLoading } = useGetAllServicesQuery();
+  if (isLoading) {
+    return;
+  }
+  const services = data;
+
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -26,40 +34,34 @@ export default function HomePage({ services }) {
     setIsModalOpen(false);
   };
   return (
-    <>
+    <div>
       <HeroCarousel />
 
-      <Services services={services} showModal={showModal} />
-      <SubCategoryService
-        isModalOpen={isModalOpen}
-        handleOk={handleOk}
-        handleCancel={handleCancel}
-        services={services}
-      />
+      {isLoading ? (
+        <Spin />
+      ) : (
+        <>
+          <Services services={services} showModal={showModal} />
+          <SubCategoryService
+            isModalOpen={isModalOpen}
+            handleOk={handleOk}
+            handleCancel={handleCancel}
+            services={services}
+          />
+        </>
+      )}
 
       <ChooseUs />
 
       <CallUs />
-    </>
+    </div>
   );
 }
-
-
 
 HomePage.getLayout = function getLayout(page) {
   return <MainLayout>{page}</MainLayout>;
 };
 
-export async function getStaticProps() {
-  const res = await fetch(API_URL + `/api/v1/services`);
-  const services = await res.json();
-  return {
-    props: {
-      services,
-    },
-    revalidate: 5,
-  };
-}
 
 
 

@@ -1,4 +1,4 @@
-import { Col, List, Modal, Row, Typography } from "antd";
+import { Button, Col, List, Modal, Row, Typography } from "antd";
 import React from "react";
 
 const ServiceModal = ({
@@ -7,27 +7,60 @@ const ServiceModal = ({
   handleCancel,
   detailsService,
 }) => {
-  console.log(detailsService);
   return (
     <Modal
-      title={detailsService.title}
+      title=<h2>{detailsService.title}</h2>
       open={isModalOpen}
       onOk={handleOk}
       onCancel={handleCancel}
-      style={{ width: 780 }}
+      style={{ width: 800 }}
     >
-      <h1></h1>
       <Row gutter={16} justify="space-around">
         <Col className="gutter-row" span={16}>
-          <List
-            bordered
-            dataSource={detailsService.serviceTypes}
-            renderItem={(item) => (
-              <List.Item>
-                <Typography>{item.name}</Typography>
-              </List.Item>
-            )}
-          />
+          <div
+            style={{
+              display: "flex",
+              margin: 8,
+              flexDirection: "column",
+            }}
+          >
+            {detailsService?.serviceTypes.map((item) => (
+              <div
+                style={{
+                  padding: 16,
+                  marginBottom: 16,
+                  borderRadius: "10px",
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+                }}
+                key={item._id}
+              >
+                <Typography style={{ fontWeight: 600, color: "#3749BB" }}>
+                  {item.name}
+                </Typography>
+                {item?.quantity.length <= 0 ? (
+                  <div>
+                    <Typography style={{ display: "block" }}>
+                      {item.cost} / unit
+                    </Typography>
+                  </div>
+                ) : (
+                  ""
+                )}
+                <div style={{ display: "flex", justifyContent: "end" }}>
+                  <Button
+                    style={{
+                      marginTop: 10,
+                    }}
+                    size="small"
+                    type="primary"
+                  >
+                    Add
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
         </Col>
         <Col className="gutter-row" span={8}></Col>
       </Row>
