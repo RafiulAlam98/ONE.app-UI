@@ -25,7 +25,7 @@ const CheckoutService = () => {
     const mData = {
       date: selectedDate,
       slot: data.slot,
-      email: data.email,
+      user: data.email,
       phone: data.phoneNumber,
       address: {
         house: data.address.house,
@@ -35,6 +35,7 @@ const CheckoutService = () => {
         area: data.address.sector,
       },
       order: orderedItemId,
+      status: "pending",
     };
     try {
       console.log(mData);
