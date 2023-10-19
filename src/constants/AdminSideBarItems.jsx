@@ -104,6 +104,40 @@ export const AdminSidebarItems = (role) => {
         },
       ],
     },
+    {
+      label: "Events",
+      key: "events",
+      icon: <DeploymentUnitOutlined />,
+      children: [
+        {
+          label: <Link href="/events/view-events">View </Link>,
+          key: "view events",
+          icon: <ContainerOutlined />,
+        },
+        {
+          label: <Link href="/events/update-events">Update </Link>,
+          key: "update events",
+          icon: <ContainerOutlined />,
+        },
+      ],
+    },
+    {
+      label: "Upcoming Service",
+      key: "upcoming-service",
+      icon: <DeploymentUnitOutlined />,
+      children: [
+        {
+          label: <Link href="/upcoming-service/view">View </Link>,
+          key: "view upcoming service",
+          icon: <ContainerOutlined />,
+        },
+        {
+          label: <Link href="/upcoming-service/update">Update </Link>,
+          key: "update upcoming service",
+          icon: <ContainerOutlined />,
+        },
+      ],
+    },
   ];
   return defaultSidebarItems;
 };
