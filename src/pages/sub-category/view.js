@@ -1,10 +1,14 @@
 import AdminLayout from "@/components/Layout/AdminLayout";
+import SubCategoryServiceColumn from "@/constants/SubCategoryServiceColumn";
+import { useGetAllSubCategoryServiceQuery } from "@/redux/slice/subCategoryService/subCategorySlice";
 import { HomeOutlined } from "@ant-design/icons";
-import { Breadcrumb, Button } from "antd";
+import { Breadcrumb, Button, Spin, Table } from "antd";
 import Link from "next/link";
 import React from "react";
 
 const ViewSubCategory = () => {
+  const { data, isLoading } = useGetAllSubCategoryServiceQuery();
+  console.log(data?.data);
   return (
     <div>
       <div style={{ margin: 32 }}>
@@ -31,6 +35,21 @@ const ViewSubCategory = () => {
           <Link href="/sub-category/add">Add Sub Category</Link>
         </Button>
       </div>
+      {isLoading && (
+        <Spin
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        />
+      )}
+      <Table
+        style={{ maxWidth: 800, margin: "0 auto" }}
+        columns={SubCategoryServiceColumn()}
+        dataSource={data?.data}
+      />
     </div>
   );
 };
