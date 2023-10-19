@@ -35,12 +35,18 @@ export default function HomePage() {
   };
   return (
     <div>
-      <HeroCarousel />
-
       {isLoading ? (
-        <Spin />
+        <Spin
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        />
       ) : (
         <>
+          <HeroCarousel />
           <Services services={services} showModal={showModal} />
           <SubCategoryService
             isModalOpen={isModalOpen}
@@ -48,12 +54,11 @@ export default function HomePage() {
             handleCancel={handleCancel}
             services={services}
           />
+          <ChooseUs />
+
+          <CallUs />
         </>
       )}
-
-      <ChooseUs />
-
-      <CallUs />
     </div>
   );
 }
@@ -61,7 +66,6 @@ export default function HomePage() {
 HomePage.getLayout = function getLayout(page) {
   return <MainLayout>{page}</MainLayout>;
 };
-
 
 
 

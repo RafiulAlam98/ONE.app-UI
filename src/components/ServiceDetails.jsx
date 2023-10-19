@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import styles from "@/styles/Details.module.css";
-import { Modal, Button, Card, Col, Row, Typography } from "antd";
+import { Button, Card, Col, Row, Typography } from "antd";
 import {
   CheckCircleOutlined,
   CloseCircleOutlined,
   RightOutlined,
 } from "@ant-design/icons";
-import ServiceModal from "./ServiceModal";
+
+import SubServiceModal from "./SubServiceModal";
 
 const ServiceDetails = ({ detailsService }) => {
   console.log(detailsService);
@@ -88,7 +89,7 @@ const ServiceDetails = ({ detailsService }) => {
                     <RightOutlined />
                   </span>
                 </Button>
-                <ServiceModal
+                <SubServiceModal
                   isModalOpen={isModalOpen}
                   handleOk={handleOk}
                   handleCancel={handleCancel}

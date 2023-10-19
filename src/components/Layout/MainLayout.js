@@ -1,10 +1,9 @@
 import { Layout } from "antd";
 import Header from "../shared/Header";
 import Footer from "../shared/Footer";
+import dynamic from "next/dynamic";
 
 const { Content } = Layout;
-
-
 
 const MainLayout = ({ children }) => {
   return (
@@ -17,4 +16,4 @@ const MainLayout = ({ children }) => {
   );
 };
 
-export default MainLayout;
+export default dynamic(() => Promise.resolve(MainLayout), { ssr: false });
