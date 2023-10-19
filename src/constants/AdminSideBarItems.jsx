@@ -15,7 +15,7 @@ import Link from "next/link";
 export const AdminSidebarItems = (role) => {
   const defaultSidebarItems = [
     {
-      label: <Link href="/admin/view-profile">Account </Link>,
+      label: <Link href="/admin">Account </Link>,
       key: "profile",
       icon: <UserOutlined />,
     },
