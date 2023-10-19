@@ -6,8 +6,12 @@ const { Meta } = Card;
 const Services = ({ services, showModal }) => {
   return (
     <div style={{ maxWidth: "1100px", margin: "auto", padding: "0 16px" }}>
-      <h1 style={{ fontSize: "24px", color: "tomato" }}>For Your Home</h1>
-      <Row gutter={16} justify="space-between">
+      <h1 style={{ fontSize: "24px", color: "tomato", margin: "16px 0" }}>
+        <span style={{ borderBottom: "2px solid tomato" }}>
+          Events By Category
+        </span>
+      </h1>
+      <Row gutter={16}>
         {services?.data?.map((service) => (
           <Col key={service._id} xs={24} sm={8} md={8} lg={6}>
             <button

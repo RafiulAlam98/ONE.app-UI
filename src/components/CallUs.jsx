@@ -1,11 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 import { PhoneOutlined } from "@ant-design/icons";
-import { Button, Col, Row } from "antd";
+import { Button, Col, Modal, Row } from "antd";
 import callUs from "../assets/images/callus.jpg";
 
 import Image from "next/image";
+import { useState } from "react";
 
 const CallUs = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "40px 8px" }}>
       <Row
@@ -38,12 +49,25 @@ const CallUs = () => {
             </h3>
 
             <div style={{ padding: 10 }}>
-              <Button style={{ margin: 10 }} type="primary">
+              <Button onClick={showModal} style={{ margin: 10 }} type="primary">
                 Request a service{" "}
               </Button>
               <Button>
                 <PhoneOutlined style={{ marginRight: 6 }} /> 01648886671
               </Button>
+
+              <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                <h3
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    minHeight: "100vh",
+                  }}
+                >
+                  Coming Soon...
+                </h3>
+              </Modal>
             </div>
           </div>
         </Col>

@@ -8,6 +8,14 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: getBaseUrl(),
   }),
-  tagTypes: ["subCategoryService", "users", "services", "order", "review","admin"],
+  tagTypes: [
+    "subCategoryService",
+    "users",
+    "services",
+    "order",
+    "review",
+    "admin",
+    "blog",
+  ],
   endpoints: () => ({}),
 });
