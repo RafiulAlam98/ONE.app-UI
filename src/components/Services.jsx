@@ -9,7 +9,7 @@ const Services = ({ services, showModal }) => {
       <h1 style={{ fontSize: "24px", color: "tomato" }}>For Your Home</h1>
       <Row gutter={16} justify="space-between">
         {services?.data?.map((service) => (
-          <Col xs={24} sm={8} md={8} lg={6}>
+          <Col key={service._id} xs={24} sm={8} md={8} lg={6}>
             <button
               style={{ border: "none", backgroundColor: "#F5F5F5" }}
               onClick={showModal}

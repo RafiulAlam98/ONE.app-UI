@@ -3,6 +3,7 @@ import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import FormSelectField from "@/components/Forms/FormSelectField";
 import MainLayout from "@/components/Layout/MainLayout";
+import { useAddOrderMutation } from "@/redux/slice/api/orderApi";
 import { useGetSingleSubCategoryServiceQuery } from "@/redux/slice/subCategoryService/subCategorySlice";
 import { Button, Col, DatePicker, Row, Spin } from "antd";
 import { useRouter } from "next/router";
@@ -12,11 +13,7 @@ const CheckoutService = () => {
   const router = useRouter();
   const orderedItemId = router?.query?.service;
   const [selectedDate, setSelectedDate] = useState("");
-  const { data, isLoading } =
-    useGetSingleSubCategoryServiceQuery(orderedItemId);
-  if (isLoading) {
-    return <Spin />;
-  }
+  const [addOrder] = useAddOrderMutation();
 
   const onChange = (date, dateString) => {
     setSelectedDate(dateString);
@@ -38,7 +35,8 @@ const CheckoutService = () => {
       status: "pending",
     };
     try {
-      console.log(mData);
+      const res = await addOrder(mData);
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
