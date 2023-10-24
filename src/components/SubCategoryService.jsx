@@ -22,7 +22,7 @@ const SubCategoryService = ({
   let value;
 
   const getSubCategory = () => {
-    return services.data.map((service) => ({
+    return services?.data.map((service) => ({
       serviceId: `${service._id}`,
       key: `${service._id}`,
       label: `${service.name}`,

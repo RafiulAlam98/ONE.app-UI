@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 
 const Profile = ({ user, route }) => {
-  const { email, name, phoneNumber, role, address, profileImg } = user;
+
   return (
     <div
       style={{
@@ -31,11 +31,11 @@ const Profile = ({ user, route }) => {
             }}
           >
             <div>
-              {profileImg ? (
+              {user?.profileImg ? (
                 <div style={{ padding: 16 }}>
                   <img
                     style={{ width: 150, borderRadius: "75px" }}
-                    src={profileImg}
+                    src={user?.profileImg}
                     alt=""
                   />
                 </div>
@@ -50,20 +50,20 @@ const Profile = ({ user, route }) => {
           <Col className="gutter-row" span={12}>
             <div style={{ marginTop: 30 }}>
               <Typography style={{ fontSize: 24, fontFamily: "serif" }}>
-                {name?.firstName} {name?.lastName} <br />
-                <span>role as {role}</span>
+                {user?.name?.firstName} {user?.name?.lastName} <br />
+                <span>role as {user?.role}</span>
               </Typography>
               <Typography style={{ fontSize: 24, fontFamily: "serif" }}>
                 Contact:
               </Typography>
               <Typography style={{ fontSize: 20, fontFamily: "serif" }}>
-                +88 {phoneNumber}
+                +88 {user?.phoneNumber}
               </Typography>
               <Typography style={{ fontSize: 20, fontFamily: "serif" }}>
-                {address}
+                {user?.address}
               </Typography>
               <Typography style={{ fontSize: 20, fontFamily: "serif" }}>
-                {email}
+                {user?.email}
               </Typography>
             </div>
           </Col>

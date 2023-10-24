@@ -4,7 +4,7 @@ import Link from "next/link";
 const SuperAdminSidebarItems = (role) => {
   const defaultSidebarItems = [
     {
-      label: <Link href="">Account </Link>,
+      label: <Link href="/super-admin">Account </Link>,
       key: "profile",
       icon: <UserOutlined />,
     },
