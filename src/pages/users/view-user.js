@@ -4,7 +4,7 @@ import { Breadcrumb, Button, Spin, Table } from "antd";
 import Link from "next/link";
 
 import { useGetAllUserQuery } from "@/redux/slice/api/userApi";
-import { UserTableColumn } from "@/constants/userTableColumn";
+import { UserTableColumn } from "../../constants/UserTableColumn";
 
 const ViewUser = () => {
   const { data, isLoading } = useGetAllUserQuery();
