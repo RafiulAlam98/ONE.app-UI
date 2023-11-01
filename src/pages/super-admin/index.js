@@ -1,10 +1,12 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import SuperAdminLayout from "@/components/Layout/SuperAdminLayout";
 import Profile from "@/components/Profile/Profile";
 import { useGetUserProfileQuery } from "@/redux/slice/api/userApi";
+import { storeUserInfo } from "@/services/auth.service";
 import { HomeOutlined } from "@ant-design/icons";
 import { Breadcrumb, Spin } from "antd";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
 const SuperAdminPage = () => {
   const { data, isLoading } = useGetUserProfileQuery();
@@ -15,6 +17,10 @@ const SuperAdminPage = () => {
   const route = `/super-admin/update`;
   const user = data?.data;
   console.log(user);
+  if (user) {
+    localStorage.setItem("role", user.role);
+  }
+
   return (
     <div>
       <div style={{ padding: "20px 32px" }}>

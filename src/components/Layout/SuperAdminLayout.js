@@ -18,22 +18,24 @@ const SuperAdminLayout = ({ children }) => {
   const loggedInUser = isLoggedIn();
   const user = getUserInfo();
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    if (!loggedInUser) {
-      router.push("/login");
-    } else if (user.role === "user") {
-      router.push("/user-profile");
-    } else if (user.role === "admin") {
-      router.push("/admin");
-    }
-    setIsLoading(true);
-  }, [router, isLoading]);
+  console.log(loggedInUser);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  if (!isLoading) {
-    return <p>Loading</p>;
-  }
+  // useEffect(() => {
+  //   if (!loggedInUser) {
+  //     router.push("/login");
+  //   } else if (user.role === "user") {
+  //     router.push("/user-profile");
+  //   } else if (user.role === "admin") {
+  //     router.push("/admin");
+  //   }
+  //   setIsLoading(true);
+  // }, [router, isLoading]);
+
+  // if (!isLoading) {
+  //   return <p>Loading</p>;
+  // }
   const role = "super_admin";
   return (
     <div>

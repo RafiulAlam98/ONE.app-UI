@@ -1,8 +1,9 @@
-export const setToLocalStorage = (key, token) => {
+export const setToLocalStorage = (key, verify) => {
   if (!key || typeof window === "undefined") {
     return "";
   }
-  return localStorage.setItem(key, token);
+
+  return localStorage.setItem(key, verify);
 };
 
 export const getFromLocalStorage = (key) => {

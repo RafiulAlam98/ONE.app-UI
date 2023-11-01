@@ -29,20 +29,18 @@ const AdminLayout = ({ children }) => {
   const loggedInUser = isLoggedIn();
   const user = getUserInfo();
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    if (!loggedInUser) {
-      router.push("/login");
-    } else if (user.role === "user") {
-      router.push("/user-profile");
-    }
-    setIsLoading(true);
-  }, [router, isLoading]);
+  // useEffect(() => {
+  //   if (user.role === "user") {
+  //     router.push("/user-profile");
+  //   }
+  //   setIsLoading(true);
+  // }, [router, isLoading]);
 
-  if (!isLoading) {
-    return <p>Loading</p>;
-  }
+  // if (!isLoading) {
+  //   return <p>Loading</p>;
+  // }
   const role = "admin";
   return (
     <div>

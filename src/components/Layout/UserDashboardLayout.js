@@ -29,18 +29,18 @@ const UserDashboardLayout = ({ children }) => {
 
   const loggedInUser = isLoggedIn();
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    if (!loggedInUser) {
-      router.push("/login");
-    }
-    setIsLoading(true);
-  }, [router, isLoading]);
+  // useEffect(() => {
+  //   if (!loggedInUser) {
+  //     router.push("/login");
+  //   }
+  //   setIsLoading(true);
+  // }, [router, isLoading]);
 
-  if (!isLoading) {
-    return <p>Loading</p>;
-  }
+  // if (!isLoading) {
+  //   return <p>Loading</p>;
+  // }
 
   return (
     <Layout

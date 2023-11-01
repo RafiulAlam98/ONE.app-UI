@@ -19,11 +19,11 @@ const login = () => {
   const {
     register,
     handleSubmit,
-    watch,
+
     formState: { errors },
   } = useForm();
 
-  const [userLogin, { error }] = useUserLoginMutation();
+  const [userLogin] = useUserLoginMutation();
 
   const onSubmit = async (data) => {
     try {
@@ -31,17 +31,17 @@ const login = () => {
       const res = await userLogin(data);
       console.log(res.data);
       if (res.data.statusCode === 200) {
-        const { accessToken, role, email } = res.data.data;
-        storeUserInfo(accessToken, role, email);
+        const { accessToken, role } = res.data.data;
+        storeUserInfo(accessToken);
         setSuccessMessage(res.message);
         if (role === "user") {
           router.push("/user-profile");
-        } else if(role === 'admin') {
+        } else if (role === "admin") {
           router.push("/admin");
         } else {
           router.push("/super-admin");
         }
-        
+
         setLoading(false);
         return <Alert message={res.message} type="success" />;
       }

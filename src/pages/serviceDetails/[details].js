@@ -12,10 +12,20 @@ import { useAddReviewMutation } from "@/redux/slice/api/reviewApi";
 const ServiceDetailsPage = () => {
   const router = useRouter();
   const id = router.query.details;
+  console.log(id);
 
   const { data, isLoading } = useGetSingleSubCategoryServiceQuery(id);
   if (isLoading) {
-    return <Spin />;
+    return (
+      <Spin
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      />
+    );
   }
 
   const detailsService = data?.data;

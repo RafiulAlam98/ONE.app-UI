@@ -5,8 +5,8 @@ import {
   setToLocalStorage,
 } from "@/helpers/utils/saveData";
 
-export const storeUserInfo = (accessToken, user, role) => {
-  return setToLocalStorage(authKey, accessToken);
+export const storeUserInfo = (verify) => {
+  return setToLocalStorage(authKey, verify);
 };
 
 export const getUserInfo = () => {

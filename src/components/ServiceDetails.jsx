@@ -45,7 +45,7 @@ const ServiceDetails = ({ detailsService }) => {
               paddingBottom: 16,
             }}
           >
-            Category by {detailsService.category.name}{" "}
+            Category by {detailsService.serviceId.name}{" "}
           </Typography>{" "}
           {/* END Category */}
           <Typography style={{ fontFamily: "serif", paddingBottom: 8 }}>
