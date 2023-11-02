@@ -11,10 +11,20 @@ const { Meta } = Card;
 
 const AllService = () => {
   const { data, isLoading } = useGetAllSubCategoryServiceQuery();
-  if (isLoading) {
-    return <Spin />;
-  }
   console.log(data.data);
+  if (isLoading) {
+    return (
+      <Spin
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      />
+    );
+  }
+
   return (
     <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
       <Row gutter={16}>
@@ -35,7 +45,6 @@ const AllService = () => {
             dataSource={data.data}
             renderItem={(item) => (
               <Link href={`#${item._id}`}>
-                {" "}
                 <List.Item
                   className={styles.serviceList}
                   style={{ fontWeight: 600 }}
@@ -59,7 +68,7 @@ const AllService = () => {
           lg={16}
           span={16}
         >
-          {data.data.map((item) => (
+          {data?.data.map((item) => (
             <div
               key={item._id}
               style={{
@@ -89,7 +98,7 @@ const AllService = () => {
                       />
                     }
                   >
-                    <Meta title={item.category.name} description="" />
+                    <Meta title={item.serviceId.name} description="" />
                   </Card>
                 </Link>
               </div>

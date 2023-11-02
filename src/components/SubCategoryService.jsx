@@ -27,15 +27,16 @@ const SubCategoryService = ({
 
   useEffect(() => {
     setLoading(true);
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setSubCategory(data);
-        setLoading(false);
-      });
+    if (serviceId) {
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          setSubCategory(data);
+          setLoading(false);
+        });
+    }
   }, [serviceId]);
 
-  console.log(subCategory);
   const getSubCategory = () => {
     return services?.data.map((service) => ({
       serviceId: `${service._id}`,
@@ -90,34 +91,36 @@ const SubCategoryService = ({
                 margin: "24px 46px 0",
               }}
             >
-              {loading ? (
-                <Spin />
-              ) : (
-                <div
-                  style={{
-                    padding: "",
-                    minHeight: 360,
-                  }}
-                >
-                  {subCategory?.statusCode !== 200 ? (
-                    <Typography
-                      style={{
-                        fontSize: 32,
-                        fontWeight: 700,
-                        color: "darkgray",
-                      }}
-                    >
-                      Please Select a Service
-                    </Typography>
-                  ) : (
-                    <div>
-                      {subCategory?.data.map((item) => (
-                        <ServiceModalList key={item._id} value={item} />
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
+              <div
+                style={{
+                  padding: "",
+                  minHeight: 360,
+                }}
+              >
+                {subCategory?.statusCode !== 200 ? (
+                  <Typography
+                    style={{
+                      fontSize: 32,
+                      fontWeight: 700,
+                      color: "darkgray",
+                    }}
+                  >
+                    Please Select a Service
+                  </Typography>
+                ) : (
+                  <div>
+                    {loading ? (
+                      <Spin />
+                    ) : (
+                      <>
+                        {subCategory?.data.map((item) => (
+                          <ServiceModalList key={item._id} value={item} />
+                        ))}
+                      </>
+                    )}
+                  </div>
+                )}
+              </div>
             </Content>
           </Layout>
         </Layout>
