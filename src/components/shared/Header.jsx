@@ -1,5 +1,9 @@
-import { authKey } from "@/constants/authKey";
-import { getUserInfo, removeUserInfo } from "@/services/auth.service";
+import { authKey, role } from "@/constants/authKey";
+import {
+  getUserInfo,
+  removeUserInfo,
+  removeUserRoleInfo,
+} from "@/services/auth.service";
 import { ExportOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Button } from "antd";
 import Link from "next/link";
@@ -12,6 +16,7 @@ const Header = () => {
   console.log(loggedInUser);
   const handleLogout = () => {
     removeUserInfo(authKey);
+    removeUserRoleInfo(role);
     router.push("/login");
   };
   return (

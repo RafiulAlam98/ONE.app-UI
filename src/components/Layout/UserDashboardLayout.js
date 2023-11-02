@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { UserSidebarItems } from "@/constants/UserSidebarItems";
-import { isLoggedIn } from "@/services/auth.service";
+import { isLoggedIn, isRole } from "@/services/auth.service";
 import {
   DesktopOutlined,
   FileOutlined,
@@ -9,10 +10,12 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Layout, Breadcrumb, Menu } from "antd";
+import { Layout, Breadcrumb, Menu, Spin } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Loading from "../ui/Loading";
+import { USER } from "@/constants/user-constant";
 
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -26,21 +29,18 @@ function getItem(label, key, icon, children) {
 
 const UserDashboardLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
-
   const loggedInUser = isLoggedIn();
+  const loggedInUserRole = isRole();
   const router = useRouter();
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   if (!loggedInUser) {
-  //     router.push("/login");
-  //   }
-  //   setIsLoading(true);
-  // }, [router, isLoading]);
 
-  // if (!isLoading) {
-  //   return <p>Loading</p>;
-  // }
+  useEffect(() => {
+    if (!loggedInUser || loggedInUserRole !== USER) {
+      router.push("/login");
+    }
+    setIsLoading(true);
+  }, [router, isLoading]);
 
   return (
     <Layout

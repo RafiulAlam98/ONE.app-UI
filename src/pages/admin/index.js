@@ -1,5 +1,6 @@
 import AdminLayout from "@/components/Layout/AdminLayout";
 import Profile from "@/components/Profile/Profile";
+import Loading from "@/components/ui/Loading";
 import { useGetUserProfileQuery } from "@/redux/slice/api/userApi";
 import { HomeOutlined } from "@ant-design/icons";
 import { Breadcrumb, Spin } from "antd";
@@ -9,7 +10,7 @@ import React from "react";
 const AdminPage = () => {
   const { data, isLoading } = useGetUserProfileQuery();
   if (isLoading) {
-    return <Spin />;
+    return <Loading />;
   }
 
   const route = `/admin/update-admin-profile`;

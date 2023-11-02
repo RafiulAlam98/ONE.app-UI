@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import SuperAdminSidebarItems from "@/constants/SuperAdminSidebarItems";
-import { getUserInfo, isLoggedIn } from "@/services/auth.service";
+import { SUPER_ADMIN } from "@/constants/user-constant";
+import { getUserInfo, isLoggedIn, isRole } from "@/services/auth.service";
 
 import { Layout, Menu, theme } from "antd";
 import { useRouter } from "next/router";
@@ -16,26 +18,18 @@ function getItem(label, key, icon, children) {
 
 const SuperAdminLayout = ({ children }) => {
   const loggedInUser = isLoggedIn();
-  const user = getUserInfo();
+  const loggedInUserRole = isRole();
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  console.log(loggedInUserRole);
 
-  console.log(loggedInUser);
-  // const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    if (!loggedInUser || loggedInUserRole !== SUPER_ADMIN) {
+      router.push("/login");
+    }
+    setIsLoading(true);
+  }, [router, isLoading]);
 
-  // useEffect(() => {
-  //   if (!loggedInUser) {
-  //     router.push("/login");
-  //   } else if (user.role === "user") {
-  //     router.push("/user-profile");
-  //   } else if (user.role === "admin") {
-  //     router.push("/admin");
-  //   }
-  //   setIsLoading(true);
-  // }, [router, isLoading]);
-
-  // if (!isLoading) {
-  //   return <p>Loading</p>;
-  // }
   const role = "super_admin";
   return (
     <div>

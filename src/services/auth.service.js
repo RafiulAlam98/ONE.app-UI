@@ -1,12 +1,16 @@
-import { authKey } from "@/constants/authKey";
+import { authKey, role } from "@/constants/authKey";
 import { decodedToken } from "@/helpers/utils/jwt";
 import {
   getFromLocalStorage,
+  setRoleToLocalStorage,
   setToLocalStorage,
 } from "@/helpers/utils/saveData";
 
 export const storeUserInfo = (verify) => {
   return setToLocalStorage(authKey, verify);
+};
+export const storeUserRole = (verify) => {
+  return localStorage.setItem(role, verify);
 };
 
 export const getUserInfo = () => {
@@ -19,13 +23,20 @@ export const getUserInfo = () => {
   }
 };
 
-
 export const isLoggedIn = () => {
   const authToken = getFromLocalStorage(authKey);
 
   return !!authToken;
 };
+export const isRole = () => {
+  const userRole = getFromLocalStorage(role);
+
+  return userRole;
+};
 
 export const removeUserInfo = (key) => {
+  return localStorage.removeItem(key);
+};
+export const removeUserRoleInfo = (key) => {
   return localStorage.removeItem(key);
 };

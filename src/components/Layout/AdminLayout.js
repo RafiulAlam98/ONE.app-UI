@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { AdminSidebarItems } from "@/constants/AdminSideBarItems";
-import { getUserInfo, isLoggedIn } from "@/services/auth.service";
+import { ADMIN } from "@/constants/user-constant";
+import { getUserInfo, isLoggedIn, isRole } from "@/services/auth.service";
 import {
   DesktopOutlined,
   FileOutlined,
@@ -27,20 +28,17 @@ const items = [
 
 const AdminLayout = ({ children }) => {
   const loggedInUser = isLoggedIn();
-  const user = getUserInfo();
+  const loggedInUserRole = isRole();
   const router = useRouter();
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   if (user.role === "user") {
-  //     router.push("/user-profile");
-  //   }
-  //   setIsLoading(true);
-  // }, [router, isLoading]);
+  useEffect(() => {
+    if (!loggedInUser || loggedInUserRole !== ADMIN) {
+      router.push("/login");
+    }
+    setIsLoading(true);
+  }, [router, isLoading]);
 
-  // if (!isLoading) {
-  //   return <p>Loading</p>;
-  // }
   const role = "admin";
   return (
     <div>

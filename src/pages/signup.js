@@ -33,17 +33,16 @@ const signup = () => {
 
     try {
       const res = await userSignUp(data);
-      console.log("userSignUp", res.data.statusCode);
       if (res.data.statusCode === 200) {
         const res = await userLogin(data);
         if (res.data.statusCode === 200) {
           const { accessToken, role, email } = res.data.data;
           storeUserInfo(accessToken, role, email);
           setSuccessMessage(res.message);
-          if (role === "user") {
+          if (accessToken) {
             router.push("/user-profile");
           } else {
-            router.push("/admin");
+            router.push("/login");
           }
 
           setLoading(false);

@@ -8,7 +8,8 @@ import styles from "@/styles/SignUp.module.css";
 import { useUserLoginMutation } from "@/redux/slice/api/userApi";
 import { saveDataToBrowser } from "@/helpers/utils/saveData";
 import { useRouter } from "next/router";
-import { storeUserInfo } from "@/services/auth.service";
+import { storeUserInfo, storeUserRole } from "@/services/auth.service";
+import { ADMIN, USER } from "@/constants/user-constant";
 const { Text } = Typography;
 
 const login = () => {
@@ -29,14 +30,17 @@ const login = () => {
     try {
       setLoading(true);
       const res = await userLogin(data);
-      console.log(res.data);
+
       if (res.data.statusCode === 200) {
         const { accessToken, role } = res.data.data;
+
         storeUserInfo(accessToken);
+        storeUserRole(role);
+        console.log(res.data.data);
         setSuccessMessage(res.message);
-        if (role === "user") {
+        if (role === USER) {
           router.push("/user-profile");
-        } else if (role === "admin") {
+        } else if (role === ADMIN) {
           router.push("/admin");
         } else {
           router.push("/super-admin");
