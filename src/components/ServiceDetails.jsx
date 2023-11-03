@@ -7,9 +7,15 @@ import {
   RightOutlined,
 } from "@ant-design/icons";
 import SubServiceModal from "./SubServiceModal";
+import { format } from "date-fns";
 
-const ServiceDetails = ({ detailsService }) => {
+const ServiceDetails = ({ detailsService, packages }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const originalDateStr = detailsService.createdAt;
+  const date = new Date(originalDateStr);
+
+  const formattedDate = format(date, "yyyy-MM-dd");
+
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -20,19 +26,23 @@ const ServiceDetails = ({ detailsService }) => {
     setIsModalOpen(false);
   };
   return (
-    <div className={styles.mainDetails} style={{ padding: "0 16px" }}>
-      <Row gutter={16} justify="space-between">
+    <div
+      className={styles.mainDetails}
+      style={{ padding: "0 16px", marginTop: "32px" }}
+    >
+      <Row gutter={16} style={{ padding: "24px 0px" }} justify="space-between">
         <Col className="gutter-row" span={12}>
           <Typography
             style={{
               fontFamily: "serif",
-              color: "#3749BB",
-              fontSize: 24,
+              color: "blueviolet",
+              fontSize: 32,
               paddingBottom: 4,
               marginTop: 16,
+              fontWeight: 600,
             }}
           >
-            {detailsService.title}
+            {detailsService.name}
           </Typography>
           {/* END Title */}
           <Typography
@@ -42,6 +52,7 @@ const ServiceDetails = ({ detailsService }) => {
               fontSize: 18,
               paddingBottom: 16,
               color: "blueviolet",
+              marginBottom: 16,
             }}
           >
             Category by {detailsService.serviceId.name}
@@ -53,7 +64,8 @@ const ServiceDetails = ({ detailsService }) => {
                 boxShadow:
                   "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
                 padding: 10,
-                borderRadius: 16,
+                borderRadius: 6,
+                color: "blueviolet",
               }}
             >
               Warranty {detailsService.warrantyHour} years
@@ -63,11 +75,38 @@ const ServiceDetails = ({ detailsService }) => {
                 boxShadow:
                   "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
                 padding: 10,
-                borderRadius: 16,
+                borderRadius: 6,
                 marginLeft: 4,
+                color: "blueviolet",
               }}
             >
               No Discount
+            </span>
+          </Typography>
+          {/* END Warranty and Discount  */}
+          <Typography style={{ fontFamily: "serif", marginTop: "16px" }}>
+            <span
+              style={{
+                boxShadow:
+                  "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
+                padding: 10,
+                borderRadius: 6,
+                color: "blueviolet",
+              }}
+            >
+              Total Rating {detailsService.totalRating}
+            </span>
+            <span
+              style={{
+                boxShadow:
+                  "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
+                padding: 10,
+                borderRadius: 6,
+                color: "blueviolet",
+                marginLeft: 4,
+              }}
+            >
+              Since {formattedDate}
             </span>
           </Typography>
           {/* END Warranty and Discount  */}
@@ -80,15 +119,18 @@ const ServiceDetails = ({ detailsService }) => {
               marginTop: "24px",
             }}
           >
-            {detailsService?.serviceTypes?.map((item) => (
+            {packages?.data?.map((item) => (
               <div style={{}} key={item._id}>
                 <Button
                   style={{ width: "100%" }}
                   onClick={showModal}
                   className={styles.cardModalBtn}
                 >
-                  <span> {item.name.slice(0, 25)}..</span>
-                  <span style={{ color: "#C71F66", fontWeight: 700 }}>
+                  <span style={{ color: "blueviolet" }}>
+                    {" "}
+                    {item.name.slice(0, 25)}..
+                  </span>
+                  <span style={{ color: "blueviolet", fontWeight: 700 }}>
                     <RightOutlined />
                   </span>
                 </Button>
@@ -96,19 +138,19 @@ const ServiceDetails = ({ detailsService }) => {
                   isModalOpen={isModalOpen}
                   handleOk={handleOk}
                   handleCancel={handleCancel}
-                  detailsService={detailsService}
+                  packages={packages}
                 />
               </div>
             ))}
           </Card>
         </Col>
       </Row>
-      <Row gutter={16}>
+      <Row gutter={16} style={{ padding: "20px 0px" }}>
         <Col className="gutter-row" span={12}>
           <div>
             <span
               style={{
-                backgroundColor: "#E5330B",
+                backgroundColor: "blueviolet",
                 padding: 10,
                 borderRadius: 6,
                 display: "inline-block",
@@ -144,7 +186,7 @@ const ServiceDetails = ({ detailsService }) => {
           <div>
             <span
               style={{
-                backgroundColor: "#E5330B",
+                backgroundColor: "blueviolet",
                 padding: 10,
                 borderRadius: 6,
                 display: "inline-block",
@@ -166,13 +208,13 @@ const ServiceDetails = ({ detailsService }) => {
             >
               <br />
 
-              {detailsService.features.map((feature) => (
+              {detailsService.features.map((feature, index) => (
                 <span
                   style={{ display: "block", fontFamily: "serif" }}
-                  key={feature}
+                  key={index}
                 >
                   <CheckCircleOutlined
-                    style={{ color: "#3749BB", marginRight: 8 }}
+                    style={{ color: "blueviolet", marginRight: 8 }}
                   />
                   {feature}
                 </span>
@@ -182,12 +224,12 @@ const ServiceDetails = ({ detailsService }) => {
           {/* END Features  */}
         </Col>
       </Row>
-      <Row gutter={16}>
+      <Row gutter={16} style={{ padding: "20px 0px" }}>
         <Col className="gutter-row" span={12}>
           <div>
             <span
               style={{
-                backgroundColor: "#E5330B",
+                backgroundColor: "blueviolet",
                 padding: 10,
                 borderRadius: 6,
                 display: "inline-block",
@@ -209,13 +251,13 @@ const ServiceDetails = ({ detailsService }) => {
             >
               <br />
 
-              {detailsService.includedOption.map((feature) => (
+              {detailsService.includedOption.map((feature, index) => (
                 <span
                   style={{ display: "block", fontFamily: "serif" }}
-                  key={feature}
+                  key={index}
                 >
                   <CheckCircleOutlined
-                    style={{ color: "#3749BB", marginRight: 8 }}
+                    style={{ color: "blueviolet", marginRight: 8 }}
                   />
                   {feature}
                 </span>
@@ -228,7 +270,7 @@ const ServiceDetails = ({ detailsService }) => {
           <div>
             <span
               style={{
-                backgroundColor: "#E5330B",
+                backgroundColor: "blueviolet",
                 padding: 10,
                 borderRadius: 6,
                 display: "inline-block",
@@ -250,13 +292,13 @@ const ServiceDetails = ({ detailsService }) => {
             >
               <br />
 
-              {detailsService.excludedOption.map((feature) => (
+              {detailsService.excludedOption.map((feature, index) => (
                 <span
                   style={{ display: "block", fontFamily: "serif" }}
-                  key={feature}
+                  key={index}
                 >
                   <CloseCircleOutlined
-                    style={{ color: "#3749BB", marginRight: 8 }}
+                    style={{ color: "blueviolet", marginRight: 8 }}
                   />
 
                   {feature}
@@ -270,7 +312,7 @@ const ServiceDetails = ({ detailsService }) => {
       <div>
         <span
           style={{
-            backgroundColor: "#E5330B",
+            backgroundColor: "blueviolet",
             padding: 10,
             borderRadius: 6,
             display: "inline-block",
@@ -292,13 +334,13 @@ const ServiceDetails = ({ detailsService }) => {
         >
           <br />
 
-          {detailsService.termsCondition.map((feature) => (
-            <Typography key={feature._id}>
+          {detailsService.termsCondition.map((feature, index) => (
+            <Typography key={index}>
               <span
                 style={{
                   fontSize: 18,
                   fontWeight: 600,
-                  color: "#3749BB",
+                  color: "blueviolet",
                   fontFamily: "serif",
                 }}
               >

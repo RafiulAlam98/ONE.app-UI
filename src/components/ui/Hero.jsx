@@ -17,8 +17,8 @@ const Hero = ({ detailsService }) => {
     <div className={styles.mainContainer}>
       <img
         className={styles.contentImage}
-        src={detailsService.images}
-        alt={detailsService.title}
+        src={detailsService?.images}
+        alt={detailsService?.title}
       />
       <div className={styles.headerContent}>
         <Breadcrumb
@@ -38,7 +38,7 @@ const Hero = ({ detailsService }) => {
               title: (
                 <Typography
                   style={{
-                    color: "blueviolet",
+                    color: "#FFFFFF",
                     fontFamily: "serif",
                     fontWeight: 800,
                   }}
@@ -51,17 +51,17 @@ const Hero = ({ detailsService }) => {
               title: (
                 <Typography
                   style={{
-                    color: "blueviolet",
+                    color: "#FFFFFF",
                     fontFamily: "serif",
                     fontWeight: 800,
                   }}
-                >{`${detailsService.name}`}</Typography>
+                >{`${detailsService?.name}`}</Typography>
               ),
             },
           ]}
         />
-        <h4 style={{ color: "blueviolet", fontFamily: "serif", marginTop: 10 }}>
-          {detailsService.name}
+        <h4 style={{ color: "#FFFFFF", fontFamily: "serif", marginTop: 10 }}>
+          {detailsService?.name}
         </h4>
       </div>
     </div>
