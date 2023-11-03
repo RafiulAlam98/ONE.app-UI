@@ -6,11 +6,9 @@ import {
   CloseCircleOutlined,
   RightOutlined,
 } from "@ant-design/icons";
-
 import SubServiceModal from "./SubServiceModal";
 
 const ServiceDetails = ({ detailsService }) => {
-  console.log(detailsService);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -41,11 +39,12 @@ const ServiceDetails = ({ detailsService }) => {
             style={{
               fontFamily: "serif",
               fontWeight: 400,
-              fontSize: 16,
+              fontSize: 18,
               paddingBottom: 16,
+              color: "blueviolet",
             }}
           >
-            Category by {detailsService.serviceId.name}{" "}
+            Category by {detailsService.serviceId.name}
           </Typography>{" "}
           {/* END Category */}
           <Typography style={{ fontFamily: "serif", paddingBottom: 8 }}>
@@ -57,8 +56,7 @@ const ServiceDetails = ({ detailsService }) => {
                 borderRadius: 16,
               }}
             >
-              {" "}
-              Warranty {detailsService.warrantyTime} years
+              Warranty {detailsService.warrantyHour} years
             </span>
             <span
               style={{
@@ -69,14 +67,19 @@ const ServiceDetails = ({ detailsService }) => {
                 marginLeft: 4,
               }}
             >
-              {" "}
-              Discount {detailsService.discount} %
+              No Discount
             </span>
-          </Typography>{" "}
+          </Typography>
           {/* END Warranty and Discount  */}
         </Col>
         <Col className="gutter-row" span={12}>
-          <Card className={styles.itemsContainer} style={{ maxWidth: 400 }}>
+          <Card
+            style={{
+              maxWidth: 400,
+              boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+              marginTop: "24px",
+            }}
+          >
             {detailsService?.serviceTypes?.map((item) => (
               <div style={{}} key={item._id}>
                 <Button

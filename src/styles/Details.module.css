@@ -24,9 +24,9 @@
 }
 
 .itemsContainer {
-    background: rgb(131, 58, 180);
-    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(170, 117, 117, 1) 56%, rgba(252, 176, 69, 1) 100%);
-    margin-top: 16px;
+    background-color: blueviolet;
+        opacity: 0.9;
+        margin-top: 24px;
 }
 .cardModalBtn {
     background-color: white;

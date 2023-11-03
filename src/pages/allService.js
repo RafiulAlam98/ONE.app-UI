@@ -6,24 +6,17 @@ import React from "react";
 import styles from "@/styles/AllService.module.css";
 import Link from "next/link";
 import { SafetyOutlined } from "@ant-design/icons";
+import Loading from "@/components/ui/Loading";
 
 const { Meta } = Card;
 
 const AllService = () => {
   const { data, isLoading } = useGetAllSubCategoryServiceQuery();
-  console.log(data.data);
+
   if (isLoading) {
-    return (
-      <Spin
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      />
-    );
+    return <Loading />;
   }
+  // console.log(data?.data);
 
   return (
     <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
@@ -42,14 +35,16 @@ const AllService = () => {
           <List
             className={styles.serviceContainer}
             size="large"
-            dataSource={data.data}
+            dataSource={data?.data}
             renderItem={(item) => (
               <Link href={`#${item._id}`}>
                 <List.Item
                   className={styles.serviceList}
-                  style={{ fontWeight: 600 }}
+                  style={{
+                    fontWeight: 600,
+                  }}
                 >
-                  {item.title}
+                  {item.name}
                 </List.Item>
               </Link>
             )}
@@ -82,7 +77,7 @@ const AllService = () => {
                   id={`${item._id}`}
                   style={{ fontSize: 20, fontWeight: 600, color: "tomato" }}
                 >
-                  {item.title}{" "}
+                  {console.log(item.name)}
                 </Typography>
               </div>
               <div style={{ margin: 16 }}>
@@ -98,7 +93,7 @@ const AllService = () => {
                       />
                     }
                   >
-                    <Meta title={item.serviceId.name} description="" />
+                    <Meta title={item.name} description="" />
                   </Card>
                 </Link>
               </div>
