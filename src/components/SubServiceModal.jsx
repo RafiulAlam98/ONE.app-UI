@@ -2,8 +2,8 @@
 import { Button, Col, Divider, List, Modal, Row, Typography } from "antd";
 import Link from "next/link";
 import React from "react";
-import { AiOutlinePlus } from "react-icons/Ai";
-import { TbCurrencyTaka } from "react-icons/Tb";
+
+
 
 const SubServiceModal = ({ isModalOpen, handleOk, handleCancel, packages }) => {
   console.log(packages);
@@ -120,9 +120,6 @@ const SubServiceModal = ({ isModalOpen, handleOk, handleCancel, packages }) => {
                         }}
                       >
                         Cost - <span>{item.price}</span>
-                        <span>
-                          <TbCurrencyTaka />
-                        </span>
                       </Typography>
                     </div>
                     {/*Details part end */}
@@ -147,9 +144,6 @@ const SubServiceModal = ({ isModalOpen, handleOk, handleCancel, packages }) => {
                       <Link style={{}} href={`/checkout/${item._id}`}>
                         {" "}
                         <span>Add</span>{" "}
-                        <span style={{ fontWeight: 600 }}>
-                          <AiOutlinePlus />
-                        </span>
                       </Link>
                     </Button>
                   </div>
