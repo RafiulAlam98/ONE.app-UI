@@ -34,7 +34,7 @@ const AllBlogs = () => {
             }}
           >
             <span style={{ borderBottom: "2px solid blueviolet" }}>
-              Upcoming Services
+              Blogs You Read
             </span>
           </h1>
           <Row gutter={16}>
