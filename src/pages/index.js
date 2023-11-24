@@ -17,6 +17,7 @@ import { useGetAllEventsQuery } from "@/redux/slice/api/eventApi";
 import AllEvents from "@/components/AllEvents";
 import UpcomingService from "@/components/UpcomingService";
 import AllBlogs from "@/components/AllBlogs";
+import Feedback from "@/components/Feedback";
 
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -100,6 +101,7 @@ export default function HomePage() {
           <CallUs />
           <UpcomingService />
           <AllBlogs />
+          <Feedback />
         </>
       )}
     </div>

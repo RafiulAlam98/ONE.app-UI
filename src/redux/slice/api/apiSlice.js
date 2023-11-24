@@ -19,6 +19,8 @@ export const api = createApi({
     "blog",
     "events",
     "upcoming-service",
+    "blog",
+    "feedback",
   ],
   endpoints: () => ({}),
 });
