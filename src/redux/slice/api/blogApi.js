@@ -7,7 +7,7 @@ const headers = {
   Authorization: `${token}`,
 };
 
-const orderApi = api.injectEndpoints({
+const blogApi = api.injectEndpoints({
   endpoints: (builder) => ({
     addBlog: builder.mutation({
       query: (data) => ({
@@ -28,4 +28,4 @@ const orderApi = api.injectEndpoints({
   }),
 });
 
-export const { useAddBlogMutation, useGetAllBlogQuery } = orderApi;
+export const { useAddBlogMutation, useGetAllBlogQuery } = blogApi;

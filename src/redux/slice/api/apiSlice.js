@@ -18,6 +18,7 @@ export const api = createApi({
     "admin",
     "blog",
     "events",
+    "upcoming-service",
   ],
   endpoints: () => ({}),
 });

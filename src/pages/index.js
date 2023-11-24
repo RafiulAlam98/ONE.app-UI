@@ -15,6 +15,8 @@ import { Spin } from "antd";
 import AllSubServices from "@/components/AllSubServices";
 import { useGetAllEventsQuery } from "@/redux/slice/api/eventApi";
 import AllEvents from "@/components/AllEvents";
+import UpcomingService from "@/components/UpcomingService";
+import AllBlogs from "@/components/AllBlogs";
 
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -96,6 +98,8 @@ export default function HomePage() {
           <ChooseUs />
           <AllEvents event={event} />
           <CallUs />
+          <UpcomingService />
+          <AllBlogs />
         </>
       )}
     </div>
