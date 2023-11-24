@@ -10,12 +10,14 @@ export const api = createApi({
   }),
   tagTypes: [
     "subCategoryService",
+    "sub-services",
     "users",
     "services",
     "order",
     "review",
     "admin",
     "blog",
+    "events",
   ],
   endpoints: () => ({}),
 });

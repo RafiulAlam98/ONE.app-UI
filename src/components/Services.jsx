@@ -5,10 +5,17 @@ const { Meta } = Card;
 
 const Services = ({ services, showModal }) => {
   return (
-    <div style={{ maxWidth: "1100px", margin: "auto", padding: "0 16px" }}>
-      <h1 style={{ fontSize: "24px", color: "tomato", margin: "16px 0" }}>
-        <span style={{ borderBottom: "2px solid tomato" }}>
-          Events By Category
+    <div style={{ maxWidth: "1100px", margin: "auto", padding: "56px 16px" }}>
+      <h1
+        style={{
+          fontSize: "24px",
+          color: "blueviolet",
+          margin: "16px 0",
+          paddingBottom: "16px",
+        }}
+      >
+        <span style={{ borderBottom: "2px solid blueviolet" }}>
+          Category Of Service We Provide
         </span>
       </h1>
       <Row gutter={16}>

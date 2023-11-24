@@ -28,7 +28,7 @@ const ChooseUs = () => {
   return (
     <div
       style={{
-        backgroundColor: "#DDE5ED",
+        paddingTop: 100,
         paddingBottom: 100,
       }}
     >

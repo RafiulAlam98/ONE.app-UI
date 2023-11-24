@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Card, Col, Row, Spin } from "antd";
 import Link from "next/link";
 import React from "react";
@@ -6,8 +7,10 @@ const { Meta } = Card;
 const AllSubServices = ({ subServices }) => {
   return (
     <div style={{ maxWidth: "1100px", margin: "auto", padding: "0 16px" }}>
-      <h1 style={{ fontSize: "24px", color: "tomato", margin: "16px 0" }}>
-        <span style={{ borderBottom: "2px solid tomato" }}>More Services</span>
+      <h1 style={{ fontSize: "24px", color: "blueviolet", margin: "16px 0" }}>
+        <span style={{ borderBottom: "2px solid blueviolet" }}>
+          More Of Our Services
+        </span>
       </h1>
       <Row gutter={16}>
         {subServices?.map((item) => (
