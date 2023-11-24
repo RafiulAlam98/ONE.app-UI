@@ -6,7 +6,7 @@ const { Meta } = Card;
 
 const AllSubServices = ({ subServices }) => {
   return (
-    <div style={{ maxWidth: "1100px", margin: "auto", padding: "0 16px" }}>
+    <div style={{ maxWidth: "1200px", margin: "auto", padding: "44px 16px" }}>
       <h1 style={{ fontSize: "24px", color: "blueviolet", margin: "16px 0" }}>
         <span style={{ borderBottom: "2px solid blueviolet" }}>
           More Of Our Services

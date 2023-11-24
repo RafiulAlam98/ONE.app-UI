@@ -5,7 +5,7 @@ const { Meta } = Card;
 
 const Services = ({ services, showModal }) => {
   return (
-    <div style={{ maxWidth: "1100px", margin: "auto", padding: "56px 16px" }}>
+    <div style={{ maxWidth: "1200px", margin: "auto", padding: "44px 16px" }}>
       <h1
         style={{
           fontSize: "24px",

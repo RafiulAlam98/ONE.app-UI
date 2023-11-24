@@ -13,12 +13,15 @@ import { useGetAllServicesQuery } from "@/redux/slice/api/servicesApi";
 import { useGetAllSubServicesQuery } from "@/redux/slice/api/subServiceApi";
 import { Spin } from "antd";
 import AllSubServices from "@/components/AllSubServices";
+import { useGetAllEventsQuery } from "@/redux/slice/api/eventApi";
+import AllEvents from "@/components/AllEvents";
 
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { data, isLoading: serviceLoading } = useGetAllServicesQuery();
   const { data: subService, isLoading: subServiceLoading } =
     useGetAllSubServicesQuery();
+  const { data: events, isLoading: eventLoading } = useGetAllEventsQuery();
   if (serviceLoading && subServiceLoading) {
     return (
       <Spin
@@ -32,8 +35,8 @@ export default function HomePage() {
     );
   }
   const services = data;
-  const subServices = subService.data;
-
+  const subServices = subService?.data;
+  const event = events?.data;
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -46,7 +49,7 @@ export default function HomePage() {
   };
   return (
     <div>
-      {serviceLoading | subServiceLoading ? (
+      {serviceLoading | subServiceLoading | event ? (
         <Spin
           style={{
             display: "flex",
@@ -65,15 +68,33 @@ export default function HomePage() {
             handleCancel={handleCancel}
             services={services}
           />
+          <h2
+            style={{
+              fontWeight: 600,
+              color: "blueviolet",
+              textAlign: "center",
+              fontSize: 44,
+            }}
+          >
+            <span
+              style={{
+                textTransform: "uppercase",
+                padding: 0,
+                margin: 0,
+              }}
+            >
+              We Are Waiting For Your Order
+            </span>
+          </h2>
           <img
-            src="https://img.freepik.com/free-vector/flat-customer-service-week-horizontal-banner-template_23-2149645767.jpg?w=900&t=st=1700807664~exp=1700808264~hmac=fb2cbdc1eaa1e64735c58665bda27d554a49b87d399aef43dca367aa33bf6c36"
+            src="https://img.freepik.com/premium-photo/people-representing-diverse-professions-with-tools-holding-big-blank-banner-isolated-white-background_394555-662.jpg?w=1380"
             alt=""
             width="100%"
           />
           <AllSubServices subServices={subServices} />
 
           <ChooseUs />
-
+          <AllEvents event={event} />
           <CallUs />
         </>
       )}

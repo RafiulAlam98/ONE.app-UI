@@ -18,7 +18,7 @@ const CallUs = () => {
     setIsModalOpen(false);
   };
   return (
-    <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "40px 8px" }}>
+    <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "44px" }}>
       <Row
         gutter={{
           xs: 8,

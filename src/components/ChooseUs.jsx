@@ -28,11 +28,10 @@ const ChooseUs = () => {
   return (
     <div
       style={{
-        paddingTop: 100,
-        paddingBottom: 100,
+        padding: "44px 0",
       }}
     >
-      <div style={{ maxWidth: "1100px", margin: "0 auto", paddingBottom: 12 }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div
           style={{
             paddingLeft: "16px",

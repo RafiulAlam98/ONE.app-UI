@@ -46,7 +46,7 @@ const HeroCarousel = () => {
               alt=""
               style={{
                 width: "100%",
-                height: "330px",
+                height: "600px",
                 opacity: ".9",
               }}
             />
@@ -58,36 +58,37 @@ const HeroCarousel = () => {
               alt=""
               style={{
                 width: "100%",
-                height: "330px",
+                height: "600px",
                 opacity: ".9",
               }}
             />
           </div>
+
           <div>
             <img
               src="https://img.freepik.com/free-photo/worker-repairing-water-heater_23-2149334230.jpg?w=900&t=st=1697162385~exp=1697162985~hmac=44fda3f326930f23ccee99c0ce36cb4382ce97e46e944f00cd5bdd87fd5a0d19"
               alt=""
               style={{
                 width: "100%",
-                height: "330px",
+                height: "600px",
                 opacity: ".9",
               }}
             />
           </div>
+          
           <div>
             <img
               src="https://img.freepik.com/free-photo/full-shot-people-cleaning-office_23-2150454568.jpg?w=900&t=st=1697162446~exp=1697163046~hmac=93226a7a6f43853d676380b8f9bf2ed023f11f539b3f1390894b7f447c57b901"
               alt=""
               style={{
                 width: "100%",
-                height: "330px",
+                height: "600px",
                 opacity: ".9",
               }}
             />
           </div>
         </Carousel>
       </div>
-
     </>
   );
 };
