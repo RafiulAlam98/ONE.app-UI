@@ -31,10 +31,9 @@ const login = () => {
     try {
       setLoading(true);
       const res = await userLogin(data);
-
+      console.log(res);
       if (res.data.statusCode === 200) {
         const { accessToken, role } = res.data.data;
-
         storeUserInfo(accessToken);
         storeUserRole(role);
         console.log(res.data.data);
@@ -49,14 +48,18 @@ const login = () => {
 
         setLoading(false);
         return <Alert message={res.message} type="success" />;
+      } else {
+        console.log(res?.error.data.message);
+        setErrorMessage(res?.error.data.message);
       }
     } catch (error) {
       console.log(error);
       <Alert message={error.message} type="error" />;
-      setErrorMessage(error.message);
+
       setLoading(false);
     }
   };
+  console.log(errorMessage);
   return (
     <section>
       <Row justify="space-between">
@@ -186,7 +189,10 @@ const login = () => {
                     />
 
                     {errorMessage ? (
-                      <Text style={{ padding: "8px" }} type="danger">
+                      <Text
+                        style={{ padding: "8px", display: "block" }}
+                        type="danger"
+                      >
                         {errorMessage}
                       </Text>
                     ) : (

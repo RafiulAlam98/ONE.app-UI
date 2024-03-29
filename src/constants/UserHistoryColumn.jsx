@@ -36,13 +36,13 @@ const UserHistoryColumn = () => {
       render: function (data) {
         return (
           <>
-            {data.status === "canceled" ? (
+            {data?.status === "canceled" ? (
               <Button disabled onClick={() => console.log(data)} type="warning">
                 Canceled
               </Button>
             ) : (
               <Button onClick={() => console.log(data)} type="primary">
-                <Link href={`/user-history/${data._id}`}>Action</Link>
+                <Link href={`/user-history/${data?._id}`}>Action</Link>
               </Button>
             )}
           </>
